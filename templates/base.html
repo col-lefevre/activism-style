@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Page info -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="Advocacy Styles - ACM CHI 23 Student Design Competition">
+        <meta name="author" content="Colin LeFevre">
+        
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="icon" type="image/png" href="Images/Favicon/favicon.ico">
+      
+        <!-- CSS -->
+        <link rel="stylesheet" href="{{url_for('static', filename='css/normalize.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/skeleton.css')}}">
+        
+        <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+        <link rel="stylesheet" href="{{page_css}}">
+      
+        <!-- JQuery-->
+        <script src="JQuery/jquery-3.3.1.js"></script>
+    </head>
+    <body>
+        {% include {{url_for('templates', filename='navbar.html')}} %}
+        {% block content %}{% endblock %}
+    </body>
+</html>

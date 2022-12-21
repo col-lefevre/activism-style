@@ -1,0 +1,27 @@
+<script>
+    var fileName = (location.pathname.split('/').slice(-1)[0]).split('.')[0];
+    var qInt = parseInt(fileName.split('q')[1]);
+
+    $(function(){
+        if ((qInt > 1) & (qInt < 12)){
+            $("#back-button").attr("href", "q" + (qInt - 1) + ".html");
+            $("#next-button").attr("href", "q" + (qInt + 1) + ".html");
+        }
+        else if (qInt == 1){
+            $("#back-button").attr("href", "../index.html");
+            $("#next-button").attr("href", "q" + (qInt + 1) + ".html");
+        }
+        else if (qInt == 12){
+            $("#back-button").attr("href", "q" + (qInt - 1) + ".html");
+            $("#next-button").attr("href", "../results.html");
+        }
+    });
+</script>
+<div class="container">
+    <div class="row">
+        <div class="button-flexbox font-inter4">
+            <a class="custom-button type2" id="back-button" href="#">Back</a>
+            <a class="custom-button type1 disabled" id="next-button" href="#">Next</a>
+        </div>
+    </div>
+</div>

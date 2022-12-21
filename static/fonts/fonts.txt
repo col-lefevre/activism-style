@@ -1,0 +1,44 @@
+Inter1: 14px, 400 weight, uppercase
+Example: "Question 1 of 12"
+
+Inter2: 18px, 400 weight
+Example: "Strongly agree"
+
+Inter3: 20px, 400 weight, 40px line height
+Example: "Answer a few questions and find out..."
+
+Inter4: 26px, 400 weight
+Example: "Back", "Next"
+
+Inter5: 40px, 700 weight
+Example: "The Empath", "40%"
+
+Domine1: 18px, 400 weight
+Example: navbar
+
+Domine2: 26px, 400 weight, 40px line height
+Example: "As an advocate, you would be worried about your time constraints."
+
+Domine3: 56px, 700 weight
+Example: "Advocacy Style Quiz"
+
+Domine4: 96px, 700 weight
+Example: index.html header
+
+14px (1.00) - Inter1
+18px (1.29) - Inter2, Domine1
+20px (1.43) - Inter3
+26px (1.86) - Inter4, Domine2
+40px (2.86) - Inter5
+56px (4.00) - Domine3
+96px (6.85) - Domine 4
+
+need to scale all these down a *bit*... 80%?
+
+11px -> 12px (rounded up)
+14px
+16px
+20px
+32px -> 26px (looked too big)
+45px -> 35px (looked too big)
+77px -> 55px (looked too big)

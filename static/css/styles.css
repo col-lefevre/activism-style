@@ -1,0 +1,199 @@
+/* FONTS */
+/* Import fonts */
+@font-face {
+    font-family: Inter;
+    src: url(../Fonts/Inter-Regular.ttf);
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Inter;
+    src: url(../Fonts/Inter-Medium.ttf);
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Inter;
+    src: url(../Fonts/Inter-Bold.ttf);
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Domine;
+    src: url(../Fonts/Domine-Regular.ttf);
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Domine;
+    src: url(../Fonts/Domine-Bold.ttf);
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* Inter */
+.font-inter1 {
+    font-family: 'Inter';
+    font-weight: 400;
+    text-transform: uppercase;
+
+    font-size: 12px;
+}
+
+.font-inter2 {
+    font-family: 'Inter';
+    font-weight: 400;
+
+    font-size: clamp(12px, 1.75vw, 14px);
+} 
+
+.font-inter3 {
+    font-family: 'Inter';
+    font-weight: 400;
+    
+    line-height: clamp(25px, 4vw, 40px);
+    font-size: clamp(14px, 2vw, 16px);
+}
+
+.font-inter4 {
+    font-family: 'Inter';
+    font-weight: 400;
+    
+    font-size: clamp(16px, 2vw, 20px);
+}
+
+.font-inter5 {
+    font-family: 'Inter';
+    font-weight: 700;
+    text-align: center;
+
+    font-size: clamp(16px, 2.5vw, 26px);
+}
+
+/* Domine */
+.font-domine1 {
+    font-family: 'Domine';
+    font-weight: 400;
+    color: black;
+
+    font-size: clamp(12px, 1.75vw, 14px);
+}
+
+.font-domine2 {
+    font-family: 'Domine';
+    font-weight: 400;
+    
+    line-height: clamp(30px, 4vw, 40px);
+    font-size: clamp(16px, 2vw, 20px);
+}
+
+.font-domine3 {
+    font-family: 'Domine';
+    font-weight: 700;
+
+
+    font-size: clamp(25px, 4vw, 35px);
+}
+
+.font-domine4 {
+    font-family: 'Domine';
+    font-weight: 700;
+    line-height: clamp(45px, 6vw, 60px);
+
+    font-size: clamp(35px, 5vw, 55px);
+}
+
+/* NAVBAR */
+.nav-flexbox {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+@media (max-width: 549px) {
+    .nav-height {
+        height: 50px;
+    }
+
+    .nav-flexbox {
+        gap: 25px;
+    }
+}
+
+@media (min-width: 550px) {
+    .nav-height {
+        height: 80px;
+    }
+
+    .nav-flexbox {
+        gap: 50px;
+    }
+}
+
+.nav-container {
+    position: static;
+    width: 100%;
+    background-color: white;
+
+    filter: drop-shadow(0px 0px 3px rgb(228, 228, 228));
+}
+
+/* Button */
+.button-flexbox {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    gap: 25px;
+}
+
+.custom-button {
+    display: inline-block;
+    height: auto;
+    width: auto;
+    padding: 8px 40px;
+    border-radius: 5px;;
+
+    cursor: pointer;
+}
+
+/* Outlined + Orange Fill */
+.custom-button.type1 {
+    background-color: #E7AD00;
+    color: #FFF7DD;
+}
+
+.custom-button.type1:hover {
+    background-color: #d09c00;
+    color: #FFF7DD;
+}
+
+/* No Outline + No Fill*/
+.custom-button.type2 {
+    background-color: white;
+    color: #383838;
+}
+
+.custom-button.type2:hover {
+    background-color: white;
+    color: black;
+}
+
+.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* MISC */
+a {
+    text-decoration: none;
+}
+
+#html {
+    visibility: hidden;
+}

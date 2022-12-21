@@ -1,0 +1,130 @@
+<script>
+    var fileName = (location.pathname.split('/').slice(-1)[0]).split('.')[0];
+    var qInt = parseInt(fileName.split('q')[1]);
+    
+    // Update question count
+    $(function() {
+        $("#question-count").text("question " + qInt + " of 12");
+    });
+    
+    // Update radio ID
+    $(function() {
+        for (var i = 1; i < 6; i++) {
+            $("#radio" + i).attr("name", "q" + qInt);
+        };
+    });
+
+    //Fill question text
+    $(function(){
+        var qDescs = [
+            "As an advocate, you would like to explain complicated issues.",
+            "As an advocate, you would like to publicly support important causes.",
+            "As an advocate, you would like to plan support behind-the-scenes.",
+            "As an advocate, you would like to provide resources to other advocates.",
+            "As an advocate, you would like to help people 1-on-1.",
+            "As an advocate, you would be worried about your privacy and/or anonymity.",
+            "As an advocate, you would be worried about your time restraints.",
+            "As an advocate, you would be worried about retaliation from people who disagree with your beliefs.",
+            "As an advocate, you would be worried about judgement from peers and/or family.",
+            "As an advocate, how difficult is it for you to donate money?",
+            "As an advocate, how difficult is it for you to donate resources?",
+            "As an advocate, how difficult is it for you to share information?"
+        ];
+
+        $("#question-desc").text(qDescs[(qInt - 1)]);
+    });
+    
+    // Fill label text
+    $(function(){
+        var likertLabels = [
+            ["strongly agree", "agree", "neutral", "disagree", "strongly disagree"],
+            ["very easy","easy","neutral","hard","very hard"]
+        ];
+
+        if ((qInt >= 1) & (qInt <= 9)){
+            for (var i = 0; i < 5; i++) {
+                $("#ot" + (i+1)).text(likertLabels[0][i]);
+            }
+        }
+        else if ((qInt >= 10) & (qInt <= 12)){
+            for (var i = 0; i < 5; i++) {
+                $("#ot" + (i+1)).text(likertLabels[1][i]);
+            }
+        }
+    });
+    
+    // Save response to localStorage  
+    $(function() {
+        var update = function() { 
+            var result = $("form").serialize();
+            localStorage.setItem("q" + qInt, result.split("=")[1]);
+            // Activate "Next"
+            if ($("#next-button").hasClass("disabled")) {
+                $("#next-button").removeClass("disabled");
+            }
+        };
+        $('form').change(update);
+    });
+    
+    // Populate radio buttons with prev response
+    $(function() {
+        var storedQ = localStorage.getItem("q" + qInt);
+        if (storedQ !== null){
+            // Activate "Next"
+            $("#radio" + storedQ).prop("checked", true);
+            $("#next-button").removeClass("disabled");
+        }
+    });
+    
+</script>
+
+<div class="container">
+    <!-- QUESTION -->
+    <div class="row">
+        <div class="ten columns offset-by-one">
+            <div class="font-inter1" id="question-count"></div>
+            <div class="font-domine2" id="question-desc"></div>
+        </div>
+    </div>
+
+    <!-- OPTIONS -->
+    <div class="row">
+        <form>
+            <div class="two columns offset-by-one">
+                <label class="radio-container">
+                        <input type="radio" name="NAME" id="radio1" value="1">
+                        <div class="custom-radio"></div>
+                        <div class="font-inter2" id="ot1"></div>
+                </label>
+            </div>
+            <div class="two columns">
+                <label class="radio-container">
+                        <input type="radio" name="NAME" id="radio2" value="2">
+                        <div class="custom-radio"></div>
+                        <div class="font-inter2" id="ot2"></div>
+                </label>
+            </div>
+            <div class="two columns">
+                <label class="radio-container">
+                        <input type="radio" name="NAME" id="radio3" value="3">
+                        <div class="custom-radio"></div>
+                        <div class="font-inter2" id="ot3"></div>
+                </label>
+            </div>
+            <div class="two columns">
+                <label class="radio-container">
+                        <input type="radio" name="NAME" id="radio4" value="4">
+                        <div class="custom-radio"></div>
+                        <div class="font-inter2" id="ot4"></div>
+                </label>
+            </div>
+            <div class="two columns">
+                <label class="radio-container">
+                        <input type="radio" name="NAME" id="radio5" value="5">
+                        <div class="custom-radio"></div>
+                        <div class="font-inter2" id="ot5"></div>
+                </label>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,231 @@
+/* FONT CHANGES */
+.font-inter2 {
+    text-align: left; 
+}
+
+.font-inter3 #type1-name-c, .font-inter3 #type2-name-b, .font-inter3 #type3-name-b {
+    font-weight: 500;
+}
+
+@media (min-width: 550px) {
+    #type-secondary .font-inter5, #type-tertiary .font-inter5 {
+        font-size: clamp(18px, 2vw, 20px);
+    }
+}
+
+@media (max-width: 549px) {
+    #type-primary .font-inter5 {
+        font-size: clamp(18px, 2.5vw, 26px);
+    }
+    
+    #type-secondary .type-name.font-inter5, #type-tertiary .type-name.font-inter5 {
+        font-weight: 600;
+    }
+
+    #type-secondary .type-percent.font-inter5, #type-tertiary .type-percent.font-inter5 {
+        font-weight: 400;
+    }
+}
+
+.font-domine3{
+    text-align: left;
+}
+
+/* PAGE BACKGROUND */
+.tan-background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin-top: 80px;
+
+    width: 100%;
+    height: 35vh;
+
+    background-color: #FFF7DD;
+}
+
+.content-wrapper {
+    background-color: white;
+    filter: drop-shadow(0px 0px 3px rgb(228, 228, 228));
+    border-radius: 5px;
+        
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+@media (max-width: 549px) {
+    .tan-background {
+        margin-top: 50px;
+        height: 20vh;
+    }
+
+    .content-wrapper {
+        box-sizing: border-box;
+        padding: 25px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+}
+
+/* RESULTS */
+.circle-container {
+    display: flex;
+    width: 100%;
+}
+
+.text-circle-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.results-circle {
+    border-radius: 100%;
+    border-style: solid;
+    border-color: #E4CCFF;
+}
+
+@media (max-width: 549px) {
+    .circle-container {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+    }
+
+    #type-primary.text-circle-wrapper {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    #type-secondary.text-circle-wrapper, #type-tertiary.text-circle-wrapper {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    #type-primary .results-circle {
+        width: 40vw;
+        height: 40vw;
+        border-width: 2vw;
+    }
+
+    #type-secondary .results-circle, #type-tertiary .results-circle {
+        width: 12vw;
+        height: 12vw;
+        border-width: 1.5vw;
+        
+        order: 1;
+    }
+
+    #type-secondary .type-name, #type-tertiary .type-name {
+        order: 2;
+    }
+
+    #type-secondary .type-percent, #type-tertiary .type-percent {
+        order: 3;
+    }
+
+    #type-primary {
+        order: 1;
+    }
+
+    #type-secondary {
+        order: 2;
+    }
+
+    #type-tertiary {
+        order: 3;
+    }
+}
+
+@media (min-width: 550px) {
+    .circle-container {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 3vw;
+    }
+
+    .text-circle-wrapper {
+        flex-direction: column;
+    }
+
+    #type-primary .results-circle {
+        width: 20vw;
+        max-width: 280px;
+        height: 20vw;
+        max-height: 280px;
+        border-width: 0.75vw;
+    }
+
+    #type-secondary .results-circle, #type-tertiary .results-circle {
+        width: 10vw;
+        max-width: 140px;
+        height: 10vw;
+        max-height: 140px;
+        border-width: 0.6vw;
+    }
+
+    #type-primary {
+        order: 2;
+    }
+
+    #type-secondary {
+        order: 1;
+    }
+
+    #type-tertiary {
+        order: 3;
+    }
+}
+
+/* SPACING */
+@media (max-width: 549px) {
+    .circle-container {
+        margin-bottom: 25px;
+    }
+
+    .font-inter2 {
+        margin-bottom: 5px;
+    }
+
+    .font-domine3 {
+        margin-bottom: 15px;
+    }
+
+    #type1-text.font-domine3 {
+        margin-bottom: 10px;
+    }
+
+    .button-flexbox {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}
+
+@media (min-width: 550px) {
+    .circle-container {
+        margin-bottom: 50px;
+    }
+
+    .font-inter2 {
+        margin-bottom: 5px;
+    }
+
+    .font-domine3 {
+        margin-bottom: 25px;
+    }
+
+    #type1-text.font-domine3 {
+        margin-bottom: 10px;
+    }
+
+    .button-flexbox {
+        margin-top: 25px;
+        margin-bottom: 25px;
+    }
+}
