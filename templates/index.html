@@ -1,5 +1,82 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>index.html</h1>
+<div class="top-half">
+    <div class="container">
+        <div class="row">
+            <div class="seven columns">
+                <div class="font-domine4">Find out what your advocacy style is!</div>
+                <div class="font-inter3">
+                    Answer a few questions and find out what your advocacy style is! Learn about how you can contribute more and connect with other advocates better!
+                </div>
+                <a class="custom-button type1 font-inter4" href="Questions/q1.html">Take the quiz!</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="eight columns offset-by-four">
+                <img src="{{url_for('static', filename='images/styles/all.png')}}" class="u-full-width">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bottom-half">
+    <div class="container">
+        <div class="row" id="activist-header">
+            <div class="eight columns">
+                <div class="font-domine3">Meet the activists</div>
+            </div>
+            <div class="four columns">
+                <a class="custom-button type2 font-inter4" href="#">Explore styles</a>
+            </div>
+        </div>
+        <div class="row" id="activist-desc">
+            <div class="flexbox-container">
+                <div class="flexbox-activist">
+                    <img class="activist-pic" src="{{url_for('static', filename='images/styles/org.png')}}">
+                    <div class="flexbox-info">
+                        <div class="font-domine2">The Organizer</div>
+                        <div class="font-inter3">Organizers ensure virtual or in-person events related to abortion access are effective and run smoothly.</div>
+                    </div>
+                </div>
+                <div class="flexbox-activist">
+                    <img class="activist-pic" src="{{url_for('static', filename='images/styles/edu.png')}}">
+                    <div class="flexbox-info">
+                        <div class="font-domine2">The Educator</div>
+                        <div class="font-inter3">Educators are ready at a moments notice to share resources and information related to abortion access to their followers or those around them!</div>
+                    </div>
+                </div>
+                <div class="flexbox-activist">
+                    <img class="activist-pic" src="{{url_for('static', filename='images/styles/pro.png')}}">
+                    <div class="flexbox-info">
+                        <div class="font-domine2">The Protestor</div>
+                        <div class="font-inter3">Protestors visibly share their opinions on abortion access and ensure their voices are heard.</div>
+                    </div>
+                </div>
+                <div class="flexbox-activist">
+                    <img class="activist-pic" src="{{url_for('static', filename='images/styles/phi.png')}}">
+                    <div class="flexbox-info">
+                        <div class="font-domine2">The Philanthropist</div>
+                        <div class="font-inter3">Philanthropists are powerful in increasing the resources of abortion funds and other pro-choice organizations.</div>
+                    </div>
+                </div>
+                <div class="flexbox-activist">
+                    <img class="activist-pic" src="{{url_for('static', filename='images/styles/emp.png')}}">
+                    <div class="flexbox-info">
+                        <div class="font-domine2">The Empath</div>
+                        <div class="font-inter3">Empaths are always ready to help those around them whether it is lending an ear to listen or a ride to a local clinic.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="seven columns">
+                <div class="font-domine3">Community Map</div>
+                <div class="font-inter3">Use the community map to learn more about how each advocacy style contributes in the community. Read their stories and share your own!</div>
+            </div>
+        </div>
+        <div class="row">
+            <img src="{{url_for('static', filename='images/map_preview.png')}}" class="u-full-width" style="margin-top: 25px; margin-bottom: 50px;">
+        </div>
+    </div>
+</div>
 {% endblock %}
