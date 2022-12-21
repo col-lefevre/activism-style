@@ -4,4 +4,4 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return render_template('base.html', page_css=url_for('static', filename='css/index.css'))
+    return render_template('index.html', page_css=url_for('static', filename='css/index.css'), page_title='Home')
