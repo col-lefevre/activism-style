@@ -7,9 +7,13 @@ app.secret_key='prohealth'
 sys.path.insert(1, app.root_path)
 import myfunc
 
-@app.route("/")
+@app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/test')
+def test():
+    return render_template('navbar2.html')
 
 @app.route('/quiz')
 def quiz():
