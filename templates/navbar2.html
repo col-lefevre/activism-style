@@ -9,18 +9,20 @@
         $('#hamburger').click(function() {
             var navHeight = $('#navbar').css('height');
             if (navHeight == '50px') {
-                $('#navbar').css('height', '180px');
+                $('#navbar').addClass('navbar-open');
+                $('#navbar').removeClass('navbar-closed');
                 $('.nav-img').attr('src', 'static/images/icons/ham_close.png');
             }
             else if (navHeight == '180px') {
-                $('#navbar').css('height', '50px');
+                $('#navbar').addClass('navbar-closed');
+                $('#navbar').removeClass('navbar-open');
                 $('.nav-img').attr('src', 'static/images/icons/ham_open.png');
             };
         });          
     });
 </script>
 
-<div class="navbar" id="navbar">
+<div class="navbar navbar-closed" id="navbar">
     <div class="nav-content">
         <div id="hamburger">
             <img class="nav-img" src="static/images/icons/ham_open.png">
