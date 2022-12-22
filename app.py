@@ -1,8 +1,11 @@
 from flask import Flask, render_template, redirect, url_for, request, session
-import myfunc
+import sys
 
 app = Flask(__name__)
 app.secret_key='prohealth'
+
+sys.path.insert(1, app.root_path)
+import myfunc
 
 @app.route("/")
 def index():
@@ -42,7 +45,6 @@ def result():
         qAnswers.append(answer)
     
     rankedStyles = myfunc.getStyles(qAnswers)
-    print(rankedStyles)
 
     return render_template('results.html', \
         style1_name=rankedStyles[0][2], style1_perc=rankedStyles[0][1], style1_img=url_for('static', filename=('images/styles/'+rankedStyles[0][0]+'.png')),\
