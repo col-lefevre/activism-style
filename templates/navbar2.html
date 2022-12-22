@@ -5,16 +5,22 @@
 
 {% block content %}
 <script>
-    $(function manageNavbar() {
-        navHeight = $('#navbar').css('height');
-        console.log(navHeight);
+    $(document).ready(function() {
+        $('#hamburger').click(function() {
+            var navHeight = $('#navbar').css('height');
+            if (navHeight == '75px') {
+                $('#navbar').css('height', '300px');
+            }
+            else if (navHeight == '300px') {
+                $('#navbar').css('height', '75px');
+            };
+        });          
     });
-    $('#navbar').click(manageNavbar());
 </script>
 
 <div class="navbar" id="navbar">
     <div class="nav-content">
-        <div class="hamburger">ham</div>
+        <div id="hamburger">ham</div>
         <div class="text">text3</div>
         <div class="text">text2</div>
         <div class="text">text1</div>

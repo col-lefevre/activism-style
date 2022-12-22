@@ -11,6 +11,7 @@
 
 .nav-content div {
     height: 75px;
+    vertical-align: center;
 }
 
 @media (max-width: 549px) {
@@ -18,7 +19,7 @@
         flex-direction: column;
     }
 
-    .hamburger {
+    #hamburger {
         display: block;
     };
 }
@@ -28,7 +29,7 @@
         flex-direction: row-reverse;
     }
 
-    .hamburger {
+    #hamburger {
         display: none;
     };
 }
