@@ -11,10 +11,6 @@ import myfunc
 def index():
     return render_template('index.html')
 
-@app.route('/test')
-def test():
-    return render_template('navbar2.html')
-
 @app.route('/quiz')
 def quiz():
     return redirect(url_for('question', qInput=1))
