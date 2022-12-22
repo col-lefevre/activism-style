@@ -5,12 +5,12 @@
             if (navHeight == '50px') {
                 $('#navbar').addClass('navbar-open');
                 $('#navbar').removeClass('navbar-closed');
-                $('.nav-img').attr('src', 'static/images/icons/ham_close.png');
+                $('.nav-img').attr('src', '{{url_for('static', filename='images/icons/ham_close.png')}}');
             }
             else if (navHeight == '180px') {
                 $('#navbar').addClass('navbar-closed');
                 $('#navbar').removeClass('navbar-open');
-                $('.nav-img').attr('src', 'static/images/icons/ham_open.png');
+                $('.nav-img').attr('src', '{{url_for('static', filename='images/icons/ham_open.png')}}');
             };
         });          
     });
@@ -19,7 +19,7 @@
 <div class="navbar navbar-closed" id="navbar">
     <div class="container nav-content">
         <div id="hamburger">
-            <img class="nav-img" src="static/images/icons/ham_open.png">
+            <img class="nav-img" src="{{url_for('static', filename='images/icons/ham_open.png')}}">
         </div>
         <div>
             <a href="#"><span class="font-domine1">Take Quiz</span></a>
