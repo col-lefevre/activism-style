@@ -8,11 +8,13 @@
     $(document).ready(function() {
         $('#hamburger').click(function() {
             var navHeight = $('#navbar').css('height');
-            if (navHeight == '75px') {
-                $('#navbar').css('height', '300px');
+            if (navHeight == '50px') {
+                $('#navbar').css('height', '180px');
+                $('.nav-img').attr('src', 'static/images/icons/ham_close.png');
             }
-            else if (navHeight == '300px') {
-                $('#navbar').css('height', '75px');
+            else if (navHeight == '180px') {
+                $('#navbar').css('height', '50px');
+                $('.nav-img').attr('src', 'static/images/icons/ham_open.png');
             };
         });          
     });
@@ -20,10 +22,18 @@
 
 <div class="navbar" id="navbar">
     <div class="nav-content">
-        <div id="hamburger">ham</div>
-        <div class="text">text3</div>
-        <div class="text">text2</div>
-        <div class="text">text1</div>
+        <div id="hamburger">
+            <img class="nav-img" src="static/images/icons/ham_open.png">
+        </div>
+        <div>
+            <a href="#"><span class="font-domine1">Take Quiz</span></a>
+        </div>
+        <div>
+            <a href="#"><span class="font-domine1">Explore Styles</span></a>
+        </div>
+        <div>
+            <a href="#"><span class="font-domine1">Data Privacy</span></a>
+        </div>
     </div>
 </div>
 {% endblock %}
