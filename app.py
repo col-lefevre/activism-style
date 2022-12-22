@@ -14,10 +14,12 @@ def quiz():
 
 @app.route('/quiz/<qInput>', methods=['GET', 'POST'])
 def question(qInput):
-    if qInput.isdigit() == False or ((int(qInput) < 1) or (int(qInput) > 13)):
+    if qInput.isdigit() == False or ((int(qInput) < 0) or (int(qInput) > 13)):
         return redirect(url_for('index'))
     elif qInput == '13':
         return redirect(url_for('result'))
+    elif qInput == '0':
+        return redirect(url_for('index'))
     
     qNum = int(qInput)
 
