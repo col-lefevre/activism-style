@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}
+{% block title2 %}{% endblock %}
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/page.css')}}">
+{% block styles2 %}{% endblock%}
+{% endblock %}
+
+{% block content %}
+<script>
+    $(function(){
+        var update = function() {
+            var windowWidth = $(window).width();
+
+            if (windowWidth < 550) {
+                // Content wrapper location
+                if ($("#desktop-wrap").hasClass("content-wrapper")) {
+                    $("#desktop-wrap").removeClass("content-wrapper");
+                }
+                $("#mobile-wrap").addClass("content-wrapper");
+            }
+            else {
+                // Content wrapper location
+                if ($("#mobile-wrap").hasClass("content-wrapper")) {
+                    $("#mobile-wrap").removeClass("content-wrapper");
+                }
+                $("#desktop-wrap").addClass("content-wrapper");
+            }
+        }
+        $(document).ready(update);
+        $(window).resize(update);
+    });
+</script>
+
+<div class="tan-background"></div>
+<div class="container" id="desktop-wrap">
+    <div class="row">
+        <div class="ten columns offset-by-one" id="mobile-wrap">
+            {% block content2 %}{% endblock %}  
+        </div>
+    </div>
+</div>
+{% endblock %}

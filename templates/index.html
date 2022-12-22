@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 
+{% block title %}Advocacy Styles{% endblock %}
+{% block styles %}<link rel="stylesheet" href="{{url_for('static', filename='css/index.css')}}">{% endblock %}
+
 {% block content %}
 <div class="top-half">
     <div class="container">
@@ -9,7 +12,7 @@
                 <div class="font-inter3">
                     Answer a few questions and find out what your advocacy style is! Learn about how you can contribute more and connect with other advocates better!
                 </div>
-                <a class="custom-button type1 font-inter4" href="#">Take the quiz!</a>
+                <a class="custom-button type1 font-inter4" href="{{url_for('quiz')}}">Take the quiz!</a>
             </div>
         </div>
         <div class="row">

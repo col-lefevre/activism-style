@@ -8,6 +8,30 @@
     text-align: center;
 }
 
+/* INPUT BUTTON FIXES */
+input[type='submit'].custom-button {
+    display: inline-block;
+    height: auto;
+    width: auto;
+    padding: 8px 40px;
+    border-radius: 5px;;
+    margin: 0px;
+
+    border: none;
+    cursor: pointer;
+    
+}
+
+input[type='submit'].font-inter4 {
+    font-family: 'Inter';
+    font-weight: 400;
+    text-transform: none;
+    line-height: 1.6;
+    letter-spacing: normal;
+
+    font-size: clamp(16px, 2vw, 20px);
+}
+
 /* CUSTOM RADIO BUTTONS */
 /* Wrapper */
 .radio-container {
@@ -162,7 +186,7 @@
         margin-bottom: 0px;
     }
 
-    #question {
+    #question-body {
         margin-bottom: 20px;
     }
 
@@ -193,7 +217,7 @@
         margin-bottom: 25px;
     }
 
-    #question {
+    #question-body {
         margin-bottom: 50px;
     }
 

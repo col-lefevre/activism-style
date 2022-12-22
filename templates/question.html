@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Question {{q_num}}{% endblock %}
+{% block styles %}<link rel="stylesheet" href="{{url_for('static', filename='css/question.css')}}">{% endblock %}
+
+{% block content %}
+<!-- Enable Next on selection-->
+<script>
+    $(function() {
+        var update = function() { 
+            if ($("#next-button").hasClass("disabled")) {
+                $("#next-button").removeClass("disabled");
+            }
+        };
+        $('form').change(update);
+    });
+</script>
+
+<!-- Header / Instructions -->
+<div class="quiz-instr-container">
+    <div class="container">
+        <div class="row">
+            <div class="ten columns offset-by-one">
+                <div class="font-domine3">Advocacy Style Quiz</div>
+            </div>
+            <div class="ten columns offset-by-one">
+                <div class="font-inter3">Answer a few questions and find out what your advocacy style is! Learn about how you can contribute more and connect with other advocates better!</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Progress Bar -->
+<div class="quiz-progress-container">
+    <div class="quiz-progress-bar-body" id="prog-bar-body" style="width: {{prog_bar}}%;"></div>
+    <div class="quiz-progress-bar-end" id="prog-bar-end" style="left: {{prog_bar}}%;"></div>
+</div>
+
+<!-- Question -->
+<div class="container" id="question-body">
+    <!-- Description -->
+    <div class="row">
+        <div class="ten columns offset-by-one">
+            <div class="font-inter1" id="question-count">Question {{q_num}} of 12</div>
+            <div class="font-domine2" id="question-desc">{{q_desc}}</div>
+        </div>
+    </div>
+    <!-- Options -->
+    <div class="row">
+        <form method="post" id="form">
+            <div class="one column"></div>
+            {% for i in range(1, 6) %}
+            <div class="two columns">
+                <label class="radio-container">
+                    <input type="radio" name="QUESTION" value="{{i}}" {% if i == s_resp %}checked{% endif %}>
+                    <div class="custom-radio"></div>
+                    <div class="font-inter2">{{q_label[i-1]}}</div>
+                </label>
+            </div>
+            {% endfor %}
+        </form>
+    </div>
+</div>
+
+<!-- Nav Buttons -->
+<div class="container" id="quiz-buttons">
+    <div class="row">
+        <div class="button-flexbox">
+            <a class="custom-button type2 font-inter4" href="#">Back</a>
+            <input class="custom-button type1 font-inter4 {% if s_resp == -1 %}disabled{% endif %}" type="submit" value="Next" form="form{{question_num}}" id="next-button">
+        </div>
+    </div>
+</div>
+
+{% endblock %}

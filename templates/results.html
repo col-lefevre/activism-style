@@ -1,0 +1,41 @@
+{% extends "page.html" %}
+
+{% block title2 %}Your Results{% endblock %}
+{% block styles2 %}<link rel="stylesheet" href="{{url_for('static', filename='css/results.css')}}">{% endblock %}
+
+{% block content2 %}
+<div class="font-domine3">Your Results!</div>
+    <div class="circle-container">
+        <!-- #2 Type -->
+        <div class="text-circle-wrapper" id="type-secondary">
+            <div class="font-inter5 style">The {{style2_name}}</div>
+            <img class="results-circle" src="{{style2_img}}">
+            <div class="font-inter5 perc">{{style2_perc}}%</div>
+        </div>
+        <!-- #1 Type -->
+        <div class="text-circle-wrapper" id="type-primary">
+            <div class="font-inter5 style">The {{style1_name}}</div>
+            <img class="results-circle" src="{{style1_img}}">
+            <div class="font-inter5 perc">{{style1_perc}}%</div>
+        </div>
+        <!-- #3 Type -->
+        <div class="text-circle-wrapper" id="type-tertiary">
+            <div class="font-inter5 style">The {{style3_name}}</div>
+            <img class="results-circle" src="{{style3_img}}">
+            <div class="font-inter5 perc">{{style3_perc}}%</div>
+        </div>
+    </div>
+    <div class="font-inter2">Your advocacy style is:</div>
+    <div class="font-domine3">The {{style1_name}}</div>
+    <div class="font-inter3">
+        You are mostly the
+        <span class="blurb-text">{{style1_name}}</span>, but also show traits of the
+        <span class="blurb-text">{{style2_name}}</span> and the
+        <span class="blurb-text">{{style3_name}}</span>. Learn more about your other advocate types to see how else you can support abortion
+        access!
+    </div>
+    <div class="button-flexbox font-inter4">
+        <a class="custom-button type2" id="back-button" href="{{url_for('question', qInput=12)}}">Back</a>
+        <a class="custom-button type1 disabled" id="next-button" href="#">Next</a>
+    </div>
+{% endblock %}

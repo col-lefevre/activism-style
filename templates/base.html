@@ -8,7 +8,7 @@
         <meta name="description" content="Advocacy Styles - ACM CHI 23 Student Design Competition">
         <meta name="author" content="Colin LeFevre">
         
-        <title>{{page_title}}</title>
+        <title>{% block title %}{% endblock %}</title>
         <link rel="icon" type="image/png" href="Images/Favicon/favicon.ico">
       
         <!-- CSS -->
@@ -16,10 +16,10 @@
         <link rel="stylesheet" href="{{url_for('static', filename='css/skeleton.css')}}">
         
         <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
-        <link rel="stylesheet" href="{{page_css}}">
+        {% block styles %}{% endblock %}
       
         <!-- JQuery-->
-        <script src="JQuery/jquery-3.3.1.js"></script>
+        <script src="{{url_for('static', filename='jquery/jquery-3.3.1.js')}}"></script>
     </head>
     <body>
         {% include 'navbar.html' %}

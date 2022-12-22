@@ -2,35 +2,35 @@
 /* Import fonts */
 @font-face {
     font-family: Inter;
-    src: url(../Fonts/Inter-Regular.ttf);
+    src: url(../fonts/Inter-Regular.ttf);
     font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
     font-family: Inter;
-    src: url(../Fonts/Inter-Medium.ttf);
+    src: url(../fonts/Inter-Medium.ttf);
     font-weight: 500;
     font-style: normal;
 }
 
 @font-face {
     font-family: Inter;
-    src: url(../Fonts/Inter-Bold.ttf);
+    src: url(../fonts/Inter-Bold.ttf);
     font-weight: 700;
     font-style: normal;
 }
 
 @font-face {
     font-family: Domine;
-    src: url(../Fonts/Domine-Regular.ttf);
+    src: url(../fonts/Domine-Regular.ttf);
     font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
     font-family: Domine;
-    src: url(../Fonts/Domine-Bold.ttf);
+    src: url(../fonts/Domine-Bold.ttf);
     font-weight: 700;
     font-style: normal;
 }
