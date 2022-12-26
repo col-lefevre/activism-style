@@ -48,9 +48,8 @@
     <!-- Options -->
     <div class="row">
         <form method="post" id="form">
-            <div class="one column"></div>
             {% for i in range(1, 6) %}
-            <div class="two columns {% if i == 1 %}offset-by-one{% endif %}">
+            <div class="two columns{% if i == 1 %} offset-by-one{% endif %}">
                 <label class="radio-container">
                     <input type="radio" name="QUESTION" value="{{i}}" {% if i == s_resp %}checked{% endif %}>
                     <div class="custom-radio"></div>
