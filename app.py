@@ -15,13 +15,13 @@ def index():
 def quiz():
     return redirect(url_for('question', qInput=1))
 
-@app.route('/quiz/<qInput>', methods=['GET', 'POST'])
+@app.route('/quiz/<int:qInput>', methods=['GET', 'POST'])
 def question(qInput):
-    if qInput.isdigit() == False or ((int(qInput) < 0) or (int(qInput) > 13)):
+    if (qInput < 0) or (qInput > 13):
         return redirect(url_for('index'))
-    elif qInput == '13':
+    elif qInput == 13:
         return redirect(url_for('result'))
-    elif qInput == '0':
+    elif qInput == 0:
         return redirect(url_for('index'))
     
     qNum = int(qInput)
