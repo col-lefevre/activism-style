@@ -40,7 +40,8 @@
 
 /* Grid element -> image */
 .map-overlay img {
-    width: 80%;
+    width: 80%;;
+    max-width: 150px;
     aspect-ratio: 1/1;
     border-radius: 100%;
     
@@ -53,15 +54,13 @@
 /* Grid element -> pop up text */
 .map-overlay span {
     position: absolute;
-    top: 0;
-    left: 112.5%;
-    opacity: 1;
-
-    width: 150%;
-    aspect-ratio: 2/1;
+    
+    height: fit-content;
+    max-height: 90%;
+    
     padding: 5px 10px;
-    margin-top: 12.5%;
-
+    
+    opacity: 1;
     background-color: #FFF7DD;
     border-width: 3px;
     border-style: solid;
@@ -70,14 +69,35 @@
     box-sizing: border-box;
 }
 
-.map-overlay span.left-orient {
-    left: -162.5%;
+@media (max-width: 549px) {
+    .map-overlay span {
+        width: 200%;
+    }
+
+    .map-overlay span.left-orient {
+        left: -200%;
+    }
+}
+
+@media (min-width: 550px) {
+    .map-overlay span {
+        width: 150%;
+    }
+
+    .map-overlay span.left-orient {
+        left: -150%;
+    }
 }
 
 .map-overlay span.right-orient {
-    right: -12.5%;
+    left: 100%; 
 }
 
 .map-overlay span.disabled {
     opacity: 0;
+}
+
+.map-overlay .font-inter3 {
+    line-height: clamp(15px, 3vw, 25px);
+    font-size: clamp(11px, 2vw, 16px);
 }
