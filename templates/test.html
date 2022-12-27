@@ -24,10 +24,12 @@
         <div class="map-overlay">
             {% for i in range(1, 13) %}
             <div>
-                {% if i in style_pos %}
+                {% for style in style_pos %}
+                    {% if i == style[0] %}
                 <img class="map-img" src="{{style_src}}">
-                <span class="right-orient disabled font-inter3">Placeholder text</span>
-                {% endif %}
+                <span class="{{style[1]}}-orient disabled font-inter3">{{style_descs.pop(0)}}</span>
+                    {% endif %}
+                {% endfor %}
             </div>
             {% endfor %}
         </div>

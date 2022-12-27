@@ -59,5 +59,7 @@ def test():
 def map(styleName):
     if styleName not in ['edu', 'emp', 'org', 'phi', 'pro']:
         return redirect(url_for('index'))
-    return render_template('test.html', style_pos=myfunc.getMapPos(styleName), \
+    return render_template('test.html', \
+        style_pos=myfunc.getMapPos(styleName), \
+        style_descs=myfunc.getMapDesc(styleName), \
         style_src=url_for('static', filename=('images/styles/'+styleName+'.png')))
