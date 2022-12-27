@@ -87,7 +87,7 @@ def getStyles(answerList):
                         "emp": "1",\
                         "org": "2",\
                         "phi": "2",\
-                        "pro": "0"\
+                        "pro": "1"\
                     }, "2": {\
                         "edu": "2",\
                         "emp": "2",\
@@ -119,7 +119,7 @@ def getStyles(answerList):
                         "emp": "1",\
                         "org": "1",\
                         "phi": "0",\
-                        "pro": "1"\
+                        "pro": "2"\
                     }, "2": {\
                         "edu": "1",\
                         "emp": "1",\
@@ -151,7 +151,7 @@ def getStyles(answerList):
                         "emp": "2",\
                         "org": "0",\
                         "phi": "1",\
-                        "pro": "0"\
+                        "pro": "1"\
                     }, "2": {\
                         "edu": "2",\
                         "emp": "1",\
@@ -163,7 +163,7 @@ def getStyles(answerList):
                         "emp": "0",\
                         "org": "1",\
                         "phi": "2",\
-                        "pro": "1"\
+                        "pro": "2"\
                     }, "4": {\
                         "edu": "0",\
                         "emp": "0",\
@@ -349,7 +349,7 @@ def getStyles(answerList):
                         "emp": "2",\
                         "org": "1",\
                         "phi": "1",\
-                        "pro": "1"\
+                        "pro": "2"\
                     }, "3": {\
                         "edu": "1",\
                         "emp": "1",\
@@ -373,33 +373,33 @@ def getStyles(answerList):
                     "1": {\
                         "edu": "2",\
                         "emp": "1",\
-                        "org": "0",\
-                        "phi": "0",\
-                        "pro": "0"\
+                        "org": "1",\
+                        "phi": "1",\
+                        "pro": "2"\
                     }, "2": {\
                         "edu": "1",\
                         "emp": "1",\
                         "org": "2",\
                         "phi": "1",\
-                        "pro": "1"\
+                        "pro": "2"\
                     }, "3": {\
-                        "edu": "1",\
+                        "edu": "0",\
                         "emp": "2",\
                         "org": "1",\
-                        "phi": "0",\
-                        "pro": "0"\
+                        "phi": "2",\
+                        "pro": "1"\
                     }, "4": {\
-                        "edu": "1",\
+                        "edu": "0",\
                         "emp": "1",\
-                        "org": "2",\
+                        "org": "0",\
                         "phi": "1",\
                         "pro": "1"\
                     }, "5": {\
-                        "edu": "1",\
-                        "emp": "2",\
-                        "org": "1",\
-                        "phi": "0",\
-                        "pro": "0"\
+                        "edu": "0",\
+                        "emp": "1",\
+                        "org": "0",\
+                        "phi": "1",\
+                        "pro": "1"\
                     }\
                 }\
     }
