@@ -419,3 +419,50 @@ def getStyles(answerList):
         
     # Sort
     return sorted(styleTally, key=lambda x: x[1], reverse=True)
+
+# Calculate community desc orientation
+def getMapOrient(posNum):
+    if posNum in [1, 2, 5, 6, 9, 10]:
+        return 'right'
+    elif posNum in [3, 4, 7, 8, 11, 12]:
+        return 'left'
+
+# Get community map img positions
+def getMapPos(styleName):
+    posNum = []
+    if styleName == 'edu':
+        posNum = [4, 10]
+    elif styleName == 'emp':
+        posNum = [4, 6]
+    elif styleName == 'org':
+        posNum = [1, 8]
+    elif styleName == 'phi':
+        posNum = [4, 9]
+    elif styleName == 'pro':
+        posNum = [4, 6]
+    
+    posOrientList = []
+    for num in posNum:
+        posOrientList.append([num, getMapOrient(num)])
+    return posOrientList
+    
+def getMapDesc(styleName):
+    mapDescDict = {\
+        'edu': \
+            ['I created a social media page to share questions that concerned people can ask their local legislator',\
+            'I shared my beliefs on abortion access to my social media followers'],\
+        'emp': \
+            ['I offer to give women rides to abortion clinics in or out of state.',\
+            'I listen to peoples’ stories, so they have a space to share without being judged.'],\
+        'org': \
+            ['I made flyers to advertise a local bakery’s fundraiser sale.',\
+            'I used my marketing experience to help a local advocacy organization recruit volunteers.'],\
+        'phi': \
+            ['I donated to a local abortion fund to support women in my community.',\
+            'As a local business owner, I signed an open letter urging lawmakers to support access to abortion.'],\
+
+        'pro': \
+            ['I attended a women’s rights march to protest women’s bodies being restricted.',\
+            'I help interview potential protest supporters to make sure they are trustworthy.']
+    }
+    return mapDescDict[styleName]

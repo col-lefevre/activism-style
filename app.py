@@ -51,9 +51,13 @@ def result():
         style2_name=rankedStyles[1][2], style2_perc=rankedStyles[1][1], style2_img=url_for('static', filename=('images/styles/'+rankedStyles[1][0]+'.png')),\
         style3_name=rankedStyles[2][2], style3_perc=rankedStyles[2][1], style3_img=url_for('static', filename=('images/styles/'+rankedStyles[2][0]+'.png')))
 
+@app.route('/test')
+def test():
+    return redirect(url_for('map', styleName='emp'))
+
 @app.route('/test/<string:styleName>')
-def test(styleName):
-    if styleName not in ['emp', 'edu', 'org', 'phi', 'pro']:
+def map(styleName):
+    if styleName not in ['edu', 'emp', 'org', 'phi', 'pro']:
         return redirect(url_for('index'))
-    return render_template('test.html', style_pos=[2], \
+    return render_template('test.html', style_pos=myfunc.getMapPos(styleName), \
         style_src=url_for('static', filename=('images/styles/'+styleName+'.png')))
