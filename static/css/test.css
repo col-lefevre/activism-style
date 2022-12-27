@@ -1,0 +1,83 @@
+.map-container {
+    position: relative;
+    margin-top: 150px; /* DEV - remove later */
+}
+
+.map-img {
+    position: relative;
+    z-index: 0;
+}
+
+/* Overlay grid */
+.map-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+
+    display: flex;
+    flex-wrap: wrap;
+    direction: row;
+}
+
+/* Grid elements */
+.map-overlay div {
+    position: relative;
+    overflow: visible;
+    
+    width: 25%;
+    aspect-ratio: 1/1;
+    
+    border: 1px;
+    border-style: solid;
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Grid element -> image */
+.map-overlay img {
+    width: 80%;
+    aspect-ratio: 1/1;
+    border-radius: 100%;
+    
+    background-color: #FFF7DD;
+    border-width: 3px;
+    border-style: solid;
+    border-color: #E7AD00;
+}
+
+/* Grid element -> pop up text */
+.map-overlay span {
+    position: absolute;
+    top: 0;
+    left: 112.5%;
+    opacity: 1;
+
+    width: 150%;
+    aspect-ratio: 2/1;
+    padding: 5px 10px;
+    margin-top: 12.5%;
+
+    background-color: #FFF7DD;
+    border-width: 3px;
+    border-style: solid;
+    border-color: #E7AD00;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.map-overlay span.left-orient {
+    left: -162.5%;
+}
+
+.map-overlay span.right-orient {
+    right: -12.5%;
+}
+
+.map-overlay span.disabled {
+    opacity: 0;
+}

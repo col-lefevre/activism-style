@@ -50,3 +50,10 @@ def result():
         style1_name=rankedStyles[0][2], style1_perc=rankedStyles[0][1], style1_img=url_for('static', filename=('images/styles/'+rankedStyles[0][0]+'.png')),\
         style2_name=rankedStyles[1][2], style2_perc=rankedStyles[1][1], style2_img=url_for('static', filename=('images/styles/'+rankedStyles[1][0]+'.png')),\
         style3_name=rankedStyles[2][2], style3_perc=rankedStyles[2][1], style3_img=url_for('static', filename=('images/styles/'+rankedStyles[2][0]+'.png')))
+
+@app.route('/test/<string:styleName>')
+def test(styleName):
+    if styleName not in ['emp', 'edu', 'org', 'phi', 'pro']:
+        return redirect(url_for('index'))
+    return render_template('test.html', style_pos=[2], \
+        style_src=url_for('static', filename=('images/styles/'+styleName+'.png')))
