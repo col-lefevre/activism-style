@@ -449,6 +449,9 @@ def getStyleIntro(styleName, quizStatus, topThree):
             styleIntro[k] = 'Your advocacy style could be'
     return styleIntro[styleName]
 
+# Get carousel order for style page
+#def getStyleNav():
+
 # Calculate map desc orientation
 def getMapOrient(posNum):
     if posNum in [1, 2, 5, 6, 9, 10]:

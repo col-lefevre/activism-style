@@ -7,6 +7,12 @@ app.secret_key='prohealth'
 sys.path.insert(1, app.root_path)
 import myfunc
 
+def isQuizDone():
+    return session.get('quizDone', False)
+
+def getTopThreeStyle():
+    return [session.get('style' + str(i), 'Error') for i in range(1, 4)]
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -64,7 +70,7 @@ def styles(styleName):
         return redirect(url_for('index'))
     styleInfo = myfunc.getStyleInfo(styleName)
     return render_template('style.html', \
-        style_intro = myfunc.getStyleIntro(styleName, session.get('quizDone', False), [session.get('style' + str(i)) for i in range(1, 4)]), \
+        style_intro = myfunc.getStyleIntro(styleName, isQuizDone(), getTopThreeStyle()), \
         style_title = styleInfo['title'], \
         style_adj = styleInfo['adj'], \
         style_desc = styleInfo['desc'], \
