@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+{% block title2 %}{% endblock %}
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/page1.css')}}">
+{% block styles2 %}{% endblock%}
+{% endblock %}
+
+{% block content %}
+<div class="top-half">
+    {% block content2 %}{% endblock %}
+</div>
+<div class="bottom-half">
+    {% block content3 %}{% endblock %}
+</div>
+{% endblock %}

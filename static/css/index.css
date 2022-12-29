@@ -9,17 +9,6 @@
     line-height: 25px;
 }
 
-/* BACKGROUND */
-.top-half {
-    background-color: #FFF7DD;
-    padding-top: 35px;
-}
-
-.bottom-half {
-    background-color: white;
-    padding-top: 35px;
-}
-
 /* BUTTON CHANGES */
 .custom-button {
     padding: 8px 16px;

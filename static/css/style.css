@@ -1,6 +1,5 @@
 .map-container {
     position: relative;
-    margin-top: 150px; /* DEV - remove later */
 }
 
 .map-img {
@@ -28,10 +27,6 @@
     
     width: 25%;
     aspect-ratio: 1/1;
-    
-    border: 1px;
-    border-style: solid;
-    box-sizing: border-box;
 
     display: flex;
     align-items: center;
