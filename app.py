@@ -63,7 +63,7 @@ def result():
 def style():
     styleRank = getStyleRank()
     if styleRank == None:
-      return redirect(url_for('styles', styleName='emp'))
+      return redirect(url_for('styles', styleName='edu'))
     else:
         return redirect(url_for('styles', styleName=styleRank[0]))
 
