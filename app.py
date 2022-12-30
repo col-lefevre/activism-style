@@ -69,9 +69,6 @@ def style():
 
 @app.route('/style/<string:styleName>')
 def styles(styleName):
-    if styleName not in ['edu', 'emp', 'org', 'phi', 'pro']:
-        return redirect(url_for('index'))
-
     styleInfo = myfunc.getStyleInfo(styleName)
     return render_template('style.html', \
         style_intro = myfunc.getStyleIntro(styleName, isQuizDone(), getStyleRank()), \
@@ -82,3 +79,16 @@ def styles(styleName):
         style_img=url_for('static', filename=('images/styles/'+styleName+'.png')),\
         style_pos=myfunc.getMapPos(styleName), \
         style_descs=myfunc.getMapDesc(styleName))
+
+
+@app.route('/nextsteps/<string:styleName>')
+def nextstep(styleName):
+    return redirect(url_for('nextsteps', styleName=styleName, stepType='events', sortType='default'))
+
+@app.route('/nextsteps/<string:styleName>/<string:stepType>/<string:sortType>')
+def nextsteps(styleName, stepType, sortType):
+    step = myfunc.getNextSteps(styleName, stepType, sortType)
+    print(step)
+    return render_template('nextsteps.html', \
+        step_info=step[0], step_desc=step[1], \
+        step_type=stepType)
