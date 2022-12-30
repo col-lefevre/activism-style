@@ -10,8 +10,8 @@ import myfunc
 def isQuizDone():
     return session.get('quizDone', False)
 
-def getTopThreeStyle():
-    return [session.get('style' + str(i), 'Error') for i in range(1, 4)]
+def getStyleRank():
+    return session.get('styleRanks', None)
 
 @app.route('/')
 def index():
@@ -50,10 +50,9 @@ def result():
             return redirect(url_for('index'))
         qAnswers.append(answer)
     
-    session['quizDone'] = True
     rankedStyles = myfunc.getStyleRanks(qAnswers)
-    for i in range(3):
-        session['style'+str(i+1)] = rankedStyles[i][0]
+    session['quizDone'] = True
+    session['styleRanks'] = [x[0] for x in rankedStyles]
 
     return render_template('results.html', \
         style1_name=rankedStyles[0][2], style1_perc=rankedStyles[0][1], style1_img=url_for('static', filename=('images/styles/'+rankedStyles[0][0]+'.png')),\
@@ -68,9 +67,11 @@ def style():
 def styles(styleName):
     if styleName not in ['edu', 'emp', 'org', 'phi', 'pro']:
         return redirect(url_for('index'))
+
     styleInfo = myfunc.getStyleInfo(styleName)
     return render_template('style.html', \
-        style_intro = myfunc.getStyleIntro(styleName, isQuizDone(), getTopThreeStyle()), \
+        style_intro = myfunc.getStyleIntro(styleName, isQuizDone(), getStyleRank()), \
+        style_nav=myfunc.getStyleNav(styleName, isQuizDone(), getStyleRank()), \
         style_title = styleInfo['title'], \
         style_adj = styleInfo['adj'], \
         style_desc = styleInfo['desc'], \

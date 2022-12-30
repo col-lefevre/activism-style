@@ -439,18 +439,32 @@ def getStyleInfo(styleName):
     return styleInfo[styleName]
 
 # Get intro text for a style
-def getStyleIntro(styleName, quizStatus, topThree):
+def getStyleIntro(styleName, quizStatus, styleRanks):
     styleIntro = {x: 'Your advocacy style could also be' for x in ['edu', 'emp', 'org', 'phi', 'pro']}
     if quizStatus:
         for i, adj in enumerate(['primary', 'secondary', 'tertiary']):
-            styleIntro[topThree[i]] = f'Your {adj} advocacy style is'
+            styleIntro[styleRanks[i]] = f'Your {adj} advocacy style is'
     else:
         for k in styleIntro.keys():
             styleIntro[k] = 'Your advocacy style could be'
     return styleIntro[styleName]
 
 # Get carousel order for style page
-#def getStyleNav():
+def getStyleNav(styleName, quizStatus, styleRanks):
+    if quizStatus:
+        orderList = styleRanks
+    else:
+        orderList = ['edu', 'emp', 'org', 'phi', 'pro'] #alphabetical order
+    
+    currentIndex = orderList.index(styleName)
+    navDict = {'current': currentIndex, 'prev': 'disabled', 'next': 'disabled'}
+    
+    if currentIndex != 0:
+        navDict['prev'] = orderList[currentIndex - 1]
+    if currentIndex != 4:
+        navDict['next'] = orderList[currentIndex + 1]
+
+    return navDict
 
 # Calculate map desc orientation
 def getMapOrient(posNum):

@@ -104,6 +104,22 @@
     }
 }
 
+.style-carousel {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+}
+
+.style-carousel div {
+
+}
+
+.style-carousel div.current {
+    
+}
+
 /* MAP */
 .map-container {
     position: relative;

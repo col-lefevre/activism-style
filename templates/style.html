@@ -4,7 +4,6 @@
 {% block styles2 %}<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">{% endblock %}
 
 {% block content2 %}
-
 <div class="container">
     <div class="row flex-info">
             <img id="img1" src="{{style_img}}">
@@ -22,9 +21,20 @@
             </div>
         </div>
     </div>
+    <div class="style-carousel">
+        <a>
+            <img>
+        </a>
+        {% for i in range(5) %}
+        <div class="{% if style_nav['current'] == i %}current{% endif %}"></div>
+        {% endfor %}
+        <a>
+            <img>
+        </a>
+    </div>
 </div>
-
 {% endblock %}
+
 {% block content3 %}
 <script>
     $(document).ready(function() {
