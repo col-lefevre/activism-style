@@ -23,13 +23,13 @@
     </div>
     <div class="style-carousel">
         <a {% if style_nav['prev'] == 'disabled' %}class="disabled"{% else %}href="{{url_for('styles', styleName=style_nav['prev'])}}"{% endif %}>
-            <img>
+            <img src="{{url_for('static', filename='images/icons/arrow.png')}}">
         </a>
         {% for i in range(5) %}
         <div class="{% if style_nav['current'] == i %}current{% endif %}"></div>
         {% endfor %}
         <a {% if style_nav['next'] == 'disabled' %}class="disabled"{% else %}href="{{url_for('styles', styleName=style_nav['next'])}}"{% endif %}>
-            <img>
+            <img class="reverse" src="{{url_for('static', filename='images/icons/arrow.png')}}">
         </a>
     </div>
 </div>

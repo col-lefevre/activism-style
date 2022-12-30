@@ -1,3 +1,16 @@
+# CONTENT -> /
+# Get short, snappy descriptions for index
+def getStyleBlurb():
+    styleBlurbs = [\
+        ['edu', 'Educator', 'Educators are ready at a moments notice to share resources and information related to abortion access to their followers or those around them!'],\
+        ['emp', 'Empath', 'Empaths are always ready to help those around them whether it is lending an ear to listen or a ride to a local clinic.'],\
+        ['org', 'Organizer', 'Organizers ensure virtual or in-person events related to abortion access are effective and run smoothly.'],\
+        ['phi', 'Philanthropist', 'Philanthropists are powerful in increasing the resources of abortion funds and other pro-choice organizations.'],\
+        ['pro', 'Protestor', 'Protestors visibly share their opinions on abortion access and ensure their voices are heard.']
+    ]
+    return styleBlurbs
+
+
 # CONTENT -> /quiz
 # Get question text for Q1-12
 def getQDesc(qNum):

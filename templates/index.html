@@ -28,52 +28,28 @@
             <div class="font-domine3">Meet the activists</div>
         </div>
         <div class="four columns">
-            <a class="custom-button type2 font-inter4" href="#">Explore styles</a>
+            <a class="custom-button type2 font-inter4" href="{{url_for('style')}}">Explore styles</a>
         </div>
     </div>
     <div class="row" id="activist-desc">
         <div class="flexbox-container">
+            {% for style in style_blurbs %}
             <div class="flexbox-activist">
-                <img class="activist-pic" src="{{url_for('static', filename='images/styles/org.png')}}">
+                <a href="{{url_for('styles', styleName=style[0])}}">    
+                    <img class="activist-pic" src="{{url_for('static', filename='images/styles/' + style[0] + '.png')}}">
+                </a>
                 <div class="flexbox-info">
-                    <div class="font-domine2">The Organizer</div>
-                    <div class="font-inter3">Organizers ensure virtual or in-person events related to abortion access are effective and run smoothly.</div>
+                    <div class="font-domine2">The {{style[1]}}</div>
+                    <div class="font-inter3">{{style[2]}}</div>
                 </div>
             </div>
-            <div class="flexbox-activist">
-                <img class="activist-pic" src="{{url_for('static', filename='images/styles/edu.png')}}">
-                <div class="flexbox-info">
-                    <div class="font-domine2">The Educator</div>
-                    <div class="font-inter3">Educators are ready at a moments notice to share resources and information related to abortion access to their followers or those around them!</div>
-                </div>
-            </div>
-            <div class="flexbox-activist">
-                <img class="activist-pic" src="{{url_for('static', filename='images/styles/pro.png')}}">
-                <div class="flexbox-info">
-                    <div class="font-domine2">The Protestor</div>
-                    <div class="font-inter3">Protestors visibly share their opinions on abortion access and ensure their voices are heard.</div>
-                </div>
-            </div>
-            <div class="flexbox-activist">
-                <img class="activist-pic" src="{{url_for('static', filename='images/styles/phi.png')}}">
-                <div class="flexbox-info">
-                    <div class="font-domine2">The Philanthropist</div>
-                    <div class="font-inter3">Philanthropists are powerful in increasing the resources of abortion funds and other pro-choice organizations.</div>
-                </div>
-            </div>
-            <div class="flexbox-activist">
-                <img class="activist-pic" src="{{url_for('static', filename='images/styles/emp.png')}}">
-                <div class="flexbox-info">
-                    <div class="font-domine2">The Empath</div>
-                    <div class="font-inter3">Empaths are always ready to help those around them whether it is lending an ear to listen or a ride to a local clinic.</div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
     <div class="row">
         <div class="seven columns">
             <div class="font-domine3">Community Map</div>
-            <div class="font-inter3">Use the community map to learn more about how each advocacy style contributes in the community. Read their stories and share your own!</div>
+            <div class="font-inter3">Use the community map to learn more about how each advocacy style contributes in the community. Read their stories and get inspired!</div>
         </div>
     </div>
     <div class="row">

@@ -15,10 +15,10 @@ def getStyleRank():
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', style_blurbs=myfunc.getStyleBlurb())
 
 @app.route('/quiz')
-def quiz():
+def quiz():  
     return redirect(url_for('question', qInput=1))
 
 @app.route('/quiz/<int:qInput>', methods=['GET', 'POST'])
@@ -61,7 +61,11 @@ def result():
 
 @app.route('/style')
 def style():
-    return redirect(url_for('styles', styleName='emp'))
+    styleRank = getStyleRank()
+    if styleRank == None:
+      return redirect(url_for('styles', styleName='emp'))
+    else:
+        return redirect(url_for('styles', styleName=styleRank[0]))
 
 @app.route('/style/<string:styleName>')
 def styles(styleName):
