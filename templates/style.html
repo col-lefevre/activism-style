@@ -6,16 +6,20 @@
 {% block content2 %}
 
 <div class="container">
-    <div class="row">
-        <div class="four columns">
-            <img class="u-full-width" src="{{style_img}}">
-        </div>
-        <div class="seven columns offset-by-one">
-            <div class="font-inter2">{{style_intro}}:</div>
-            <div class="font-domine3">The {{style_title}}</div>
-            <div class="font-inter2">{% for adj in style_adj %}<span>{{adj}}</span>{% endfor %}</div>
-            <div class="font-inter3">{{style_desc}}</div>
-            <a class="custom-button type1 font-inter4" href="#">Learn more</a>
+    <div class="row flex-info">
+            <img id="img1" src="{{style_img}}">
+            <div id="info-box">
+                <div class="flex-info-mobile">
+                    <img id="img2" src="{{style_img}}">
+                    <div id="info2">    
+                        <div class="font-inter2">{{style_intro}}:</div>
+                        <div class="font-domine3">The {{style_title}}</div>
+                    </div>
+                </div>
+                <div class="flex-adj">{% for adj in style_adj %}<span class="font-inter2">{{adj}}</span>{% endfor %}</div>
+                <div class="font-inter3">{{style_desc}}</div>
+                <a class="custom-button type1 font-inter4" href="#">Learn more</a>
+            </div>
         </div>
     </div>
 </div>
