@@ -13,6 +13,13 @@ def isQuizDone():
 def getStyleRank():
     return session.get('styleRanks', None)
 
+def getDefaultStyle():
+    styleRank = getStyleRank()
+    if styleRank == None:
+      return 'edu'
+    else:
+        return styleRank[0]
+
 @app.route('/')
 def index():
     return render_template('index.html', style_blurbs=myfunc.getStyleBlurb())
@@ -61,11 +68,7 @@ def result():
 
 @app.route('/style')
 def style():
-    styleRank = getStyleRank()
-    if styleRank == None:
-      return redirect(url_for('styles', styleName='edu'))
-    else:
-        return redirect(url_for('styles', styleName=styleRank[0]))
+    return redirect(url_for('styles', styleName=getDefaultStyle()))
 
 @app.route('/style/<string:styleName>')
 def styles(styleName):
@@ -78,17 +81,20 @@ def styles(styleName):
         style_desc = styleInfo['desc'], \
         style_img=url_for('static', filename=('images/styles/'+styleName+'.png')),\
         style_pos=myfunc.getMapPos(styleName), \
-        style_descs=myfunc.getMapDesc(styleName))
+        style_descs=myfunc.getMapDesc(styleName),\
+        style_name=styleName)
 
+@app.route('/nextsteps')
+@app.route('/nextsteps/')
+@app.route('/nextsteps/<string:stepType>/')
+def nextstep(stepType='methods'):
+    return redirect(url_for('nextsteps', stepType=stepType, styleName=getDefaultStyle()))
 
-@app.route('/nextsteps/<string:styleName>')
-def nextstep(styleName):
-    return redirect(url_for('nextsteps', styleName=styleName, stepType='events', sortType='default'))
-
-@app.route('/nextsteps/<string:styleName>/<string:stepType>/<string:sortType>')
-def nextsteps(styleName, stepType, sortType):
-    step = myfunc.getNextSteps(styleName, stepType, sortType)
-    print(step)
-    return render_template('nextsteps.html', \
-        step_info=step[0], step_desc=step[1], \
-        step_type=stepType)
+@app.route('/nextsteps/<string:stepType>/<string:styleName>')
+def nextsteps(stepType, styleName):
+    return render_template('nextsteps.html',\
+        step_intro = myfunc.getNextStepsIntro(stepType=stepType, styleName=styleName),\
+        step_info = myfunc.getNextSteps(stepType=stepType, styleName=styleName),\
+        step_type=stepType,\
+        style_name=styleName\
+        )

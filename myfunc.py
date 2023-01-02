@@ -546,94 +546,74 @@ def getMapDesc(styleName):
 
 
 # CONTENT -> /nextsteps
-def getNextSteps(styleName, stepType, sortType):
-    if stepType=='events':
-        return [eventInfo(sortType), eventDesc(styleName)]
-    elif stepType=='methods':
-        return [methodInfo(styleName), methodDesc(styleName)]
-        
-def eventInfo(sortType):
-    eventInfo = [ \
-        (1, {'name': 'Midwest Power of Choice 2022', 'date': datetime.datetime(2022, 12, 12), 'time': '12:30 - 1:30 PM', 'in-person': True}), \
-        (2, {'name': 'Men For Choice', 'date': datetime.datetime(2022, 12, 8), 'time': '7:00 - 9:00 PM', 'in-person': True}), \
-        (3, {'name': '3rd Bloomington Power of Choice Event', 'date': datetime.datetime(2022, 12, 9), 'time': '9:30 - 11:30 AM', 'in-person': False}), \
-        (4, {'name': 'Pro-Choice Meetup 2022', 'date': datetime.datetime(2022, 12, 15), 'time': '4:00 - 6:00 PM', 'in-person': True}) \
-    ]
-
-    if sortType=='date':
-        eventInfo.sort(key=lambda x: x[1]['date'])
-    elif sortType=='in-person':
-        for event in eventInfo:
-            if not event[1]['in-person']:
-                eventInfo.remove(event)
-    
-    return eventInfo
-
-def eventDesc(styleName):
-    eventByStyle = { \
-        1: {\
-            'edu': {'short': 'a', 'long': 'b'},\
-            'emp': {'short': 'a', 'long': 'b'},\
-            'org': {'short': 'a', 'long': 'b'},\
-            'phi': {'short': 'a', 'long': 'b'},\
-            'pro': {'short': 'a', 'long': 'b'}},\
-        2: {\
-            'edu': {'short': 'a', 'long': 'b'},\
-            'emp': {'short': 'a', 'long': 'b'},\
-            'org': {'short': 'a', 'long': 'b'},\
-            'phi': {'short': 'a', 'long': 'b'},\
-            'pro': {'short': 'a', 'long': 'b'}},\
-        3: {\
-            'edu': {'short': 'a', 'long': 'b'},\
-            'emp': {'short': 'a', 'long': 'b'},\
-            'org': {'short': 'a', 'long': 'b'},\
-            'phi': {'short': 'a', 'long': 'b'},\
-            'pro': {'short': 'a', 'long': 'b'}},\
-        4: {\
-            'edu': {'short': 'a', 'long': 'b'},\
-            'emp': {'short': 'a', 'long': 'b'},\
-            'org': {'short': 'a', 'long': 'b'},\
-            'phi': {'short': 'a', 'long': 'b'},\
-            'pro': {'short': 'a', 'long': 'b'}}}
-
-    returnDict = {}
-    for k1, v1 in eventByStyle.items():
-        addList = []
-        for k2, v2 in v1.items():
-            if k2 == styleName:
-                newEntry = (k2, v2['long'])
-                addList.append(newEntry)
-                addList = sortEventDesc(addList, addList.index(newEntry))
-            else:
-                addList.append((k2, v2['short']))
-        returnDict[k1] = addList
-
-    return returnDict
-
-def sortEventDesc(addList, styleIndex):
-    if styleIndex != 0:
-        sortVar = addList[0], addList[styleIndex]
-        addList[styleIndex], addList[0] = sortVar
-    return addList
-
-def methodInfo(styleName):
+def getNextSteps(stepType, styleName):
+    eventInfo = {\
+        'Informational Events': {\
+            'edu': [('Educators', ' can share important news and local developments with attendees'), ('As an ', 'educator', ',you can be a vital part of conversations at informational events. By sharing important news and local developments with attendees, you can empower others to support reproductive rights in an informed, conscious manner.')],\
+            'emp': [('Empaths', ' can listen to the stories of attendees and provide emotional support'), ('As an ', 'empath', ', you can be an important part of community building at informational events. By empathizing with attendees, listening to their stories, and providing emotional support, you can encourage others to share their experiences and be part of a safe, welcoming community.')],\
+            'org': [('Organizers', ' can connect likeminded attendees and help them form groups'), ('As an ', 'organizer', ', you can have a big impact on community building at informational events. By connecting likeminded attendees with one another, you can help form powerful groups of local community members interested in reproductive rights activism.')],\
+            'phi': [('Philanthropists', ' can encourage others to give by donating to the fundraiser'), ('As a ', 'philanthropist', ', you can be a crucial part of successful informational events. By publicly donating to fundraisers, you can encourage attendees to attend more events and to get more involved in reproductive rights activism, as well as giving event organizers the funds to create more events in the future.')],\
+            'pro': [('Protestors', ' can be vocal pro-choice attendees that make others more comfortable'), ('As a ', 'protestor', ', you can make informational events more welcoming and comfortable for potential attendees. By attending and voicing about your pro-choice beliefs, you can make like-minded attendees more willing to share their beliefs and engage with their peers.')]},\
+        'Letter Writing Events': {\
+            'edu': [('Educators', ' can share information on notable local legislators'), ('As an ', 'educator', ', you can be a crucial part of letter writing events. By sharing important information on current reproductive rights legislation and the legislators responsible, you can help attendees decide the content and recipients of their letters.')],\
+            'emp': [("Empaths", " can share stories they've heard to include in letters"), ("As an ", "empath", ", you can have a big impact on letter writing events. By sharing the powerful stories you've heard and have permission to share, you can give attendees persuasive, important stories to include in their letters.")],\
+            'org': [('Organizers', ' can help attendees coordinate letter topics and recipients'), ('As an ', 'organizer', ', you can make letter writing events more coordinated and successful. Both helping attendees coordinate letter topics and recipients, you can help the event have a stronger impact on those legislators.')],\
+            'phi': [('Philanthropists', ' can fund letter writing materials for virtual attendees'), ('As a ', 'philanthropist', ', you can be a vital part of letter writing events. Even for virtual events, you can fund letter writing materials, compensating attendees for stamps, paper, and other materials they bought for themselves.')],\
+            'pro': [('Protestors', ' can explain how to be vocal and passionate about your beliefs in a letter'), ('As a ', 'protestor', ', you can be an important part of letter writing events. As someone comfortable sharing your beliefs publicly, you can help attendees do the same in their letters, helping them feel more comfortable writing to local legislators.')]},\
+        'Protests & Marches': {\
+            'edu': [('Educators', ' can share recent developments and news to encourage potential activists to attend'), ('As an ', 'educator', ', you can have a big impact on protests. By sharing recent legislative developments, you can encourage potential activists to attend and lend their voices to the cause.')],\
+            'emp': [("Empaths", " can create a welcoming protest atmosphere by listening to attendees' experiences"), ("As an ", 'empath' ", you can make a protest more welcoming to potential activists. By listening to and empathizing with attendees' experiences, you can help them become more comfortable sharing their stories and protesting for reproductive rights.")],\
+            'org': [('Organizers', ' can help manage the event and advertise it to the local activist community'), ('As an ', 'organizer', ', you can be a vital part of protests. By managing the different parts of the protest and advertising it to the local activist community, you can help the protest run smoothly and have a bigger impact on the fight for reproductive rights.')],\
+            'phi': [('Philanthropists', ' can help fund event resources, advertisement, and security'), ('As a ', 'philanthropist', ', you can be an important part of protests. By contributing money and other resources, you can help fund security for protestors, advertisements for potential attendees, and other important elements of a successful protest.')],\
+            'pro': [('Protestors', ' can be the vocal, passionate, and active part of the protest'), ('As a ', 'protestor', ', you can be a crucial part of protests. By attending and vocally supporting your beliefs, you make the protest and its values heard by those in your community, and inspire community members to support reproductive rights.')]}\
+        }
     methodInfo = {\
-        'edu': ['Create a personal space to organize your resources and information', 'Encourage likeminded friends to get involved as advocates', 'Share important information in person and/or on social media'],
-        'emp': ['Volunteer at local abortion clinics', 'Research online support groups for people in need to get involved with', 'Consider anonymously sharing your experiences'],
-        'org': ['Research local organizations to get involved with', "Offer to support local businesses' advocacy work", 'Get involved with and support the protest community'],
-        'phi': ['Donate to abortion clinics in your area', 'Provide local advocates with resources', 'Research potential abortion funds to support'],
-        'pro': ["Vocalize your beliefs in places where it's safe to do so", 'Attend protests, marches, and other visible areas of advocacy', 'Talk to people in need to understand how to convey their experiences']
-    }
+        'edu': [\
+            ('Organize your resources and information', ('As an ', 'educator', ', you are equipped to share important news and resources with community members. Keeping that news and resources organized will make sharing far easier.')),\
+            ('Encourage people to get involved with activism', ('Anyone can be an activist. As an ', 'educator', ', you have the information to demonstrate that, and can use that information to encourage people to get involved.')),\
+            ('Share important information however you can', ('As an ', 'educator', ', you have information that others lack. Finding ways to share that information, whether in-person or online, is a great way to support reproductive rights.'))],\
+        'emp': [\
+            ('Volunteer at local abortion clinics', ("As an ", "empath", ", you excel at listening to others' stories and validating their experiences. Volunteering at local clinics can give you an opportunity to do just that!")),\
+            ('Join online support groups for abortion seekers', ('Abortion seekers need support from empathetic listeners. As an ', 'empath', ', you can provide the support they need during this difficult time.')),\
+            ('Consider anonymously sharing your experiences', ("As an ", "empath", ", you aren't just good at listening to experiences: you're also great at sharing experiences. Consider sharing your own anonymously to inspire others to get involved!"))],\
+        'org': [\
+            ('Research local organizations to get involved with', ('As an ', 'organizer', ', you excel at managing complicated networks of people and resources. Local organizations focused on reproductive rights can benefit from your expertise!')),\
+            ("Offer to support local businesses' activism work", ('Local businesses are often interested in supporting important causes like reproductive rights but may not be sure how to do so. As an ', 'organizer', ', you have the skills they need!')),\
+            ('Get involved with the local protest community', ('Protests are an important part of fighting for reproductive rights. As an ', 'organizer', ', you have a lot of valuable management skills that can help create successful protests.'))],\
+        'phi': [\
+            ('Donate to abortion clinics in your area', ('Local abortion clinics need both money and resources to continue operating. As a ', 'philanthropist', ', you can donate the needed resources and empower the clinic to continue helping people in need.')),\
+            ('Provide local activists with resources', ('Local activists need resources to create events that support reproductive rights. As a ', 'philanthropist', ', you can support their effort and community growth by contributing resources!')),\
+            ('Research potential abortion funds to support', ('Beyond clinics, there are also funds that support abortion seekers. As a ', 'philanthropist', ', you can donate money to these funds and help abortion seekers in need.'))],\
+        'pro': [\
+            ('Publicly and vocally support your beliefs', ('As a ', 'protestor', ', you are more comfortable supporting reproductive rights publicly than others. By supporting publicly, you can inspire others to also support!')),\
+            ('Attend protests and marches', ('As a ', 'protestor', ', your comfort with public support makes you a great fit for protests and marches. Attending these vents could be a great for you to support reproductive rights!')),\
+            ('Encourage non-protestors to get involved', ("There are many paths to activism for reproductive rights besides protesting. As a ", "protestor", ", you are most often associated with activism—use this to encourage people to get involved as activists. Everyone's talents are welcome!"))]\
+        }
+    
+    returnInfo = []
 
-    return methodInfo[styleName]
+    if stepType == 'events':
+        for key, value in eventInfo.items():
+            styleList = getShortStyle()
+            styleList.remove(styleName)
+            returnInfo.append([key, value[styleName][1], [value[style][0] for style in styleList]])
 
-def methodDesc(styleName):
-    methodDesc = {\
-        'edu': ['', '', ''],
-        'emp': ['', '', ''],
-        'org': ['', '', ''],
-        'phi': ['', '', ''],
-        'pro': ['', '', '']
-    }
+    elif stepType == 'methods':
+        returnInfo = methodInfo[styleName]
 
-    return methodDesc[styleName]
+    return returnInfo
+
+def getNextStepsIntro(stepType, styleName):
+    indefArticle = None
+    if styleName in ['phi', 'pro']:
+        indefArticle = 'a'
+    else:
+        indefArticle = 'an'
+    
+    actionPhrase = None
+    if stepType == 'events':
+        actionPhrase = 'to contribute to activism events'
+    else:
+        actionPhrase = 'to get more involved in activism'
+
+    return f'How {actionPhrase} as {indefArticle} {convertShortToLong(styleName)}:'

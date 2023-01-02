@@ -17,7 +17,7 @@
                 </div>
                 <div class="flex-adj">{% for adj in style_adj %}<span class="font-inter2">{{adj}}</span>{% endfor %}</div>
                 <div class="font-inter3">{{style_desc}}</div>
-                <a class="custom-button type1 font-inter4" href="#">Learn more</a>
+                <a class="custom-button type1 font-inter4" href="{{url_for('nextsteps', stepType='methods', styleName=style_name)}}">Learn more</a>
             </div>
         </div>
     </div>
