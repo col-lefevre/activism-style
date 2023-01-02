@@ -41,7 +41,12 @@ def question(qInput):
 
     if request.method == 'GET':
         saved_resp = int(session.get(('q' + str(qNum)), '-1'))
-        return render_template('question.html', q_num=qNum, q_desc=myfunc.getQDesc(qNum), q_label=myfunc.getQLabels(qNum), prog_bar=(qNum*100/12), s_resp=saved_resp)
+        return render_template('question.html', \
+            q_num=qNum, \
+            q_desc=myfunc.getQDesc(qNum), \
+            q_label=myfunc.getQLabels(qNum), \
+            prog_bar=(qNum*100/12), \
+            s_resp=saved_resp)
     
     elif request.method == 'POST':
         session['q' + str(qNum)] = request.form['QUESTION']
@@ -67,6 +72,7 @@ def result():
         style3_name=rankedStyles[2][2], style3_perc=rankedStyles[2][1], style3_img=url_for('static', filename=('images/styles/'+rankedStyles[2][0]+'.png')))
 
 @app.route('/style')
+@app.route('/styles')
 def style():
     return redirect(url_for('styles', styleName=getDefaultStyle()))
 
@@ -98,3 +104,12 @@ def nextsteps(stepType, styleName):
         step_type=stepType,\
         style_name=styleName\
         )
+
+@app.route('/data-privacy')
+def privacy():
+    return redirect(url_for('index'))
+
+@app.route('/about-us')
+def about():
+    return redirect(url_for('index'))
+

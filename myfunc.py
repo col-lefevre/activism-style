@@ -1,5 +1,3 @@
-import datetime
-
 # MISC
 def getShortStyle():
     return ['edu', 'emp', 'org', 'phi', 'pro']
@@ -14,11 +12,11 @@ def convertShortToLong(styleShort):
 # Get short, snappy descriptions for index
 def getStyleBlurb():
     styleBlurbs = [\
-        ['edu', convertShortToLong('edu'), 'Educators are ready at a moments notice to share resources and information related to abortion access to their followers or those around them!'],\
-        ['emp', convertShortToLong('emp'), 'Empaths are always ready to help those around them whether it is lending an ear to listen or a ride to a local clinic.'],\
-        ['org', convertShortToLong('org'), 'Organizers ensure virtual or in-person events related to abortion access are effective and run smoothly.'],\
-        ['phi', convertShortToLong('phi'), 'Philanthropists are powerful in increasing the resources of abortion funds and other pro-choice organizations.'],\
-        ['pro', convertShortToLong('pro'), 'Protestors visibly share their opinions on abortion access and ensure their voices are heard.']
+        ['edu', convertShortToLong('edu'), "Educators are ready at a moment's notice to share resources and information related to reproductive rights"],\
+        ['emp', convertShortToLong('emp'), "Empaths help those seeking reproductive care, whether by lending a sympathetic ear or offering a ride to a local clinic"],\
+        ['org', convertShortToLong('org'), "Organizers ensure activist events related to reproductive rights, such as abortion access, are successful and run smoothly"],\
+        ['phi', convertShortToLong('phi'), "Philanthropists support reproductive rights by increasing the resources of abortion funds and other pro-choice organizations"],\
+        ['pro', convertShortToLong('pro'), "Protestors visibly share their opinions on reproductive rights like abortion access and ensure their voices are heard"]\
     ]
     return styleBlurbs
 
@@ -27,31 +25,36 @@ def getStyleBlurb():
 # Get question text for Q1-12
 def getQDesc(qNum):
     qDescs = [\
-        "As an advocate, you would like to explain complicated issues.", \
-        "As an advocate, you would like to publicly support important causes.", \
-        "As an advocate, you would like to plan support behind-the-scenes.", \
-        "As an advocate, you would like to provide resources to other advocates.", \
-        "As an advocate, you would like to help people 1-on-1.", \
-        "As an advocate, you would be worried about your privacy and/or anonymity.", \
-        "As an advocate, you would be worried about your time restraints.", \
-        "As an advocate, you would be worried about retaliation from people who disagree with your beliefs.", \
-        "As an advocate, you would be worried about judgement from peers and/or family.", \
-        "As an advocate, how difficult is it for you to donate money?", \
-        "As an advocate, how difficult is it for you to donate resources?", \
-        "As an advocate, how difficult is it for you to share information?"\
+        (1, "explain controversial issues"), \
+        (1, "openly support causes important to you in public"), \
+        (1, "plan support out of the public view"), \
+        (1, "provide resources and information to other advocates"), \
+        (1, "help people one-on-one"), \
+        (2, "your privacy and/or anonymity"), \
+        (2, "your time constraints"), \
+        (2, "interactions with people who disagree with your beliefs"), \
+        (2, "judgment from your peers and/or family about your beliefs"), \
+        (3, "donate money"), \
+        (3, "donate your time or supplies/resources"), \
+        (3, "share information to educate or inform the public or other advocates")\
     ]
-    return qDescs[qNum-1]
+    return f'As an activist, you would {qDescVerb(qDescs[qNum-1][0])} {qDescs[qNum-1][1]}.'
+
+def qDescVerb(prefixNum):
+    if prefixNum == 1:
+        return 'like to'
+    elif prefixNum == 2:
+        return 'worried about'
+    elif prefixNum == 3:
+        return 'find it easy to'
 
 # Get likert scale labels
 def getQLabels(qNum):
     qLabels = [\
-        ["strongly agree", "agree", "neutral", "disagree", "strongly disagree"], \
-        ["very easy","easy","neutral","hard","very hard"]\
+        ["strongly agree", "agree", "neutral", "disagree", "strongly disagree"] \
     ]
-    if 1 <= qNum <= 9:
+    if 1 <= qNum <= 12:
         return qLabels[0]
-    elif 10 <= qNum <= 12:
-        return qLabels[1]
 
 # Calculate style rankings
 def getStyleRanks(answerList):
@@ -467,27 +470,27 @@ def getStyleRanks(answerList):
 def getStyleInfo(styleName):
     styleInfo = {\
         'edu': {'title': convertShortToLong('edu'), 'adj': ['curious', 'questioning', 'perceptive'],\
-            'desc': 'You make an impact through the power of your knowledge. You spread information about abortion access either in person or on social media. Educators are ready at a moments notice to share resources and information related to abortion access to their followers or those around them!'},\
+            'desc': "As an Educator, you make an impact through the power of your knowledge. Educators are ready at a moment's notice to share resources and information related to reproductive rights. You could spread information about abortion access to friends in person, or you could spread that information virtually to your social media followers. "},\
         'emp': {'title': convertShortToLong('emp'), 'adj': ['compassionate', 'relatable', 'caring'],\
-            'desc': 'You make an impact through your compassion by listening to stories of those who have experiences with abortion access. You are able to share what you have heard to spread awareness. Empaths are always ready to help those around them whether it is lending an ear to listen or a ride to a local clinic.'},\
+            'desc': "As an Empath, you make an impact through your compassion. Empaths help those seeking reproductive care, whether by lending a sympathetic ear or offering a ride to a local clinic. You could listen to stories of those who have had difficulty accessing an abortion or other reproductive care, or you could share stories, with permission, to inspire others to get involved."},\
         'org': {'title': convertShortToLong('org'), 'adj': ['creative', 'coordinated', 'strategic'],\
-            'desc': 'You make an impact through by working behind the scenes in supporting pro-choice efforts. You may attend virtual events or help plan in-person events by creating fliers or finding other ways to spread the word. Organizers ensure virtual or in-person events related to abortion access are effective and run smoothly.'},\
+            'desc': "As an Organizer, you make an impact by working behind the scenes. Organizers ensure activist events related to reproductive rights, such as abortion access, are successful and run smoothly. You could start your own activism event for reproductive rights, or you could help existing organizers and events manage their events."},\
         'phi': {'title': convertShortToLong('phi'), 'adj': ['resourceful', 'generous', 'benevolent'],\
-            'desc': 'You make an impact by providing financial support or resources to abortion access efforts. You make a difference by giving resources to organizations that provide and increase abortion access. Philanthropists are powerful in increasing the resources of abortion funds and other pro-choice organizations.'},\
+            'desc': "As a Philanthropist, you make an impact by providing resources. Philanthropists support reproductive rights by increasing the resources of abortion funds and other pro-choice organizations. You could donate money to activist organizations, clinics, and abortion funds, or you could offer resources such as venues for events."},\
         'pro': {'title': convertShortToLong('pro'), 'adj': ['fearless', 'passionate', 'confident'],\
-            'desc': 'You make an impact by showing up at protests and pro-choice other events to show your support for abortion access. You are willing to physically show up to show your support by traveling to larger cities or going to local events. Protestors visibly share their opinions on abortion access and ensure their voices are heard.'}\
+            'desc': "As a Protestor, you make an impact by publicly advocating for reproductive rights. Protestors visibly share their opinions on reproductive rights like abortion access and ensure their voices are heard. You could attend local protests and marches to support issues like abortion access in your local community, or you could travel to larger protests to support the broader cause."}\
         }
     return styleInfo[styleName]
 
 # Get intro text for a style
 def getStyleIntro(styleName, quizStatus, styleRanks):
-    styleIntro = {x: 'Your advocacy style could also be' for x in getShortStyle()}
+    styleIntro = {x: 'Your activism style could also be' for x in getShortStyle()}
     if quizStatus:
         for i, adj in enumerate(['primary', 'secondary', 'tertiary']):
-            styleIntro[styleRanks[i]] = f'Your {adj} advocacy style is'
+            styleIntro[styleRanks[i]] = f'Your {adj} activism style is'
     else:
         for k in styleIntro.keys():
-            styleIntro[k] = 'Your advocacy style could be'
+            styleIntro[k] = 'Your activism style could be'
     return styleIntro[styleName]
 
 # Get carousel order for style page
@@ -516,7 +519,7 @@ def getMapOrient(posNum):
 
 # Get community map img positions
 def getMapPos(styleName):
-    posNum = {a: b for a, b in zip(getShortStyle(), [[4, 10], [4, 6], [1, 8], [4, 9], [4, 6]])}
+    posNum = {a: b for a, b in zip(getShortStyle(), [[1, 7, 10], [3, 5, 12], [1, 8], [4, 9], [2, 7, 9]])}
     posOrientList = []
     for num in posNum[styleName]:
         posOrientList.append([num, getMapOrient(num)])
@@ -527,25 +530,29 @@ def getMapDesc(styleName):
     mapDescDict = {\
         'edu': \
             ['I created a social media page to share questions that concerned people can ask their local legislator',\
-            'I shared my beliefs on abortion access to my social media followers'],\
+            'I shared my beliefs on abortion access to my social media followers',\
+            "I educated the public as a speaker for a reproductive rights event"],\
         'emp': \
-            ['I offer to give women rides to abortion clinics in or out of state.',\
-            'I listen to peoples’ stories, so they have a space to share without being judged.'],\
+            ['I offer to give women rides to abortion clinics in or out of state',\
+            "I listen to peoples' stories, so they have a space to share without being judged",\
+            "I support abortion journeys by aiding abortion seekers as a volunteer"],\
         'org': \
-            ['I made flyers to advertise a local bakery’s fundraiser sale.',\
-            'I used my marketing experience to help a local advocacy organization recruit volunteers.'],\
+            ["I made flyers to advertise a local bakery's fundraiser sale",\
+            'I used my marketing experience to help a local advocacy organization recruit volunteers'],\
         'phi': \
-            ['I donated to a local abortion fund to support women in my community.',\
-            'As a local business owner, I signed an open letter urging lawmakers to support access to abortion.'],\
+            ['I donated to a local abortion fund to support women in my community',\
+            'As a local business owner, I signed an open letter urging lawmakers to support access to abortion'],\
 
         'pro': \
-            ['I attended a women’s rights march to protest women’s bodies being restricted.',\
-            'I help interview potential protest supporters to make sure they are trustworthy.']
+            ["I attended a women's rights march to protest bodily autonomy being restricted",\
+            'I help interview potential protest supporters to make sure they are trustworthy',\
+            "I actively prevent pro-life supporters from harassing people going to Planned Parenthood"]
     }
     return mapDescDict[styleName]
 
 
 # CONTENT -> /nextsteps
+# Get content for next steps
 def getNextSteps(stepType, styleName):
     eventInfo = {\
         'Informational Events': {\
@@ -603,6 +610,7 @@ def getNextSteps(stepType, styleName):
 
     return returnInfo
 
+# Get intro blurb for next steps
 def getNextStepsIntro(stepType, styleName):
     indefArticle = None
     if styleName in ['phi', 'pro']:
