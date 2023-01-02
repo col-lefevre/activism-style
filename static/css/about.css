@@ -1,0 +1,23 @@
+.font-domine4 {
+    margin-bottom: 15px;
+}
+
+.custom-button {
+    margin-top: 15px;
+    margin-bottom: 50px;
+}
+
+.member-container {
+    width: 100%;
+    display: flex;
+    flex-shrink: 0;
+
+}
+
+.member {
+
+}
+
+.member img {
+    
+}

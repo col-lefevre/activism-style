@@ -105,11 +105,12 @@ def nextsteps(stepType, styleName):
         style_name=styleName\
         )
 
-@app.route('/data-privacy')
+@app.route('/data')
 def privacy():
-    return redirect(url_for('index'))
-
+    return render_template('data.html')
+    
 @app.route('/about-us')
 def about():
-    return redirect(url_for('index'))
+    return render_template('about.html',\
+        team_info=myfunc.getTeamInfo())
 

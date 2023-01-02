@@ -1,0 +1,52 @@
+.font-inter3 {
+    line-height: clamp(25px, 4vw, 32.5px);
+}
+
+.font-domine3 {
+    margin-bottom: 30px;
+}
+
+.custom-button {
+    margin-top: 20px;
+}
+
+.text-flex {
+    width: 100%;
+    height: fit-content;
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    margin-bottom: 30px;
+}
+
+.text-flex .font-domine2 {
+    width: 40%;
+}
+
+.text-flex .font-inter3 {
+    width: 50%;
+}
+
+@media (max-width: 549px) {
+    .font-domine3 {
+        margin-bottom: 15px;
+    }
+    
+    .text-flex {
+        flex-direction: column;
+        gap: 5px;
+
+        margin-bottom: 20px;
+    }
+
+    .text-flex .font-domine2 {
+        width: 100%;
+    }
+    
+    .text-flex .font-inter3 {
+        width: 100%;
+    }
+}

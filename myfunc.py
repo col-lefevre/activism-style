@@ -625,3 +625,14 @@ def getNextStepsIntro(stepType, styleName):
         actionPhrase = 'to get more involved in activism'
 
     return f'How {actionPhrase} as {indefArticle} {convertShortToLong(styleName)}:'
+
+# CONTENT -> /about-us
+def getTeamInfo():
+    teamInfo = [\
+        ['ash', 'Aswati Panicker', 'Ph.D. Health Informatics', 'Indiana University | May 2025 (Expected)'],\
+        ['colin', 'Colin LeFevre', 'B.S. Informatics', 'Indiana University | May 2024 (Expected)'],\
+        ['forum', 'Forum Modi', 'Ph.D. Health Informatics', 'Indiana University | May 2027 (Expected)'],\
+        ['nikhil', 'Nikhil Dinesh', 'M.S. Human Computer Interaction & Design', 'Indiana University | May 2023 (Expected)'],\
+        ['sitha', 'Sitha Vallabhaneni', 'M.S. Human Computer Interaction & Design', 'Indiana University | May 2023 (Expected)']\
+    ]
+    return teamInfo

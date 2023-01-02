@@ -1,0 +1,29 @@
+{% extends "page2.html" %}
+
+{% block title2 %}Data Privacy{% endblock %}
+{% block styles2 %}<link rel="stylesheet" href="{{url_for('static', filename='css/data.css')}}">{% endblock %}
+
+{% block content2 %}
+<div class="font-domine3">Your Data</div>
+<div class="text-flex">
+    <div class="font-domine2">What data is collected?</div>
+    <div class="font-inter3">This website collects and stores your responses to all 12 questions and the calculations based on those answers.</div>
+</div>
+<div class="text-flex">
+    <div class="font-domine2">Why is the data collected?</div>
+    <div class="font-inter3">We collect your question answers so we can calculate your style and personalize your browsing experience.</div>
+</div>
+<div class="text-flex">
+    <div class="font-domine2">Where is the data stored?</div>
+    <div class="font-inter3">Your data is stored on your local browser in a cookie. It is not stored anywhere else.</div>
+</div>
+<div class="text-flex">
+    <div class="font-domine2">Is my data encrypted?</div>
+    <div class="font-inter3">No, your data is not encrypted. Encryption might come later, but for now this prototype site does not include it.</div>
+</div>
+<div class="text-flex">
+    <div class="font-domine2">How can I delete my data?</div>
+    <div class="font-inter3">By default, your data is automatically deleted when you fully close your browser. You can also manually clear your browser cookies.</div>
+</div>
+<div class="custom-button type1 font-inter4 u-pull-right" onclick="history.back()">Back</div>
+{% endblock %}

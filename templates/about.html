@@ -1,0 +1,29 @@
+{% extends "page1.html" %}
+
+{% block title2 %}About Us{% endblock %}
+{% block styles2 %}<link rel="stylesheet" href="{{url_for('static', filename='css/about.css')}}">{% endblock %}
+
+{% block content2 %}
+<div class="container">
+    <div class="row">
+        <div class="six columns">
+            <div class="font-domine4">Meet the team</div>
+            <div class="font-inter3">We're student researchers and designers from the Proactive Health Informatics lab at Indiana University. We're passionate about using technology to empower people's management and understanding of their health.</div>
+            <a href='mailto:clefevr@iu.edu' class="custom-button type1 font-inter4">Contact Us</a>
+        </div>
+        <div class="five columns offset-by-one">
+            <img class='u-full-width' style='padding: 15px;' src="{{url_for('static', filename='images/team/all.png')}}">
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block content3 %}
+<div class="container">
+    <div class="row">
+        <div class="font-domine3">Our members</div>
+        <div class="member-flex">
+
+        </div>
+    </div>
+</div>
+{% endblock %}
