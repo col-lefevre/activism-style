@@ -109,7 +109,7 @@ def nextsteps(stepType, styleName):
 def privacy():
     return render_template('data.html')
     
-@app.route('/about-us')
+@app.route('/about')
 def about():
     return render_template('about.html',\
         team_info=myfunc.getTeamInfo())

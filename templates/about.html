@@ -9,10 +9,7 @@
         <div class="six columns">
             <div class="font-domine4">Meet the team</div>
             <div class="font-inter3">We're student researchers and designers from the Proactive Health Informatics lab at Indiana University. We're passionate about using technology to empower people's management and understanding of their health.</div>
-            <a href='mailto:clefevr@iu.edu' class="custom-button type1 font-inter4">Contact Us</a>
-        </div>
-        <div class="five columns offset-by-one">
-            <img class='u-full-width' style='padding: 15px;' src="{{url_for('static', filename='images/team/all.png')}}">
+            <a href="https://prohealth.luddy.indiana.edu" target="_blank" rel="noopener noreferrer" class="custom-button type1 font-inter4">Our Lab</a>
         </div>
     </div>
 </div>
@@ -20,9 +17,25 @@
 {% block content3 %}
 <div class="container">
     <div class="row">
-        <div class="font-domine3">Our members</div>
+        <div class="eight columns">
+            <div class="font-domine3">Our members</div>
+        </div>
+        <div class="four columns">
+            <a href='mailto:clefevr@iu.edu' class="custom-button type2 font-inter4">Contact Us</a>
+        </div>
+    </div>
+    <div class="row">
         <div class="member-flex">
-
+            {% for member in team_info %}
+            <div class="member">
+                <img src="{{url_for('static', filename='images/team/'+member[0]+'.png')}}">
+                <div class="member-text">
+                    <div class="font-domine2">{{member[1]}}</div>
+                    <div class="font-domine1">{{member[2]}}</div>
+                    <div class="font-inter2">{{member[3]}}</div>
+                </div>
+            </div>
+            {% endfor %}
         </div>
     </div>
 </div>

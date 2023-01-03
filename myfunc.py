@@ -629,10 +629,10 @@ def getNextStepsIntro(stepType, styleName):
 # CONTENT -> /about-us
 def getTeamInfo():
     teamInfo = [\
-        ['ash', 'Aswati Panicker', 'Ph.D. Health Informatics', 'Indiana University | May 2025 (Expected)'],\
-        ['colin', 'Colin LeFevre', 'B.S. Informatics', 'Indiana University | May 2024 (Expected)'],\
-        ['forum', 'Forum Modi', 'Ph.D. Health Informatics', 'Indiana University | May 2027 (Expected)'],\
-        ['nikhil', 'Nikhil Dinesh', 'M.S. Human Computer Interaction & Design', 'Indiana University | May 2023 (Expected)'],\
-        ['sitha', 'Sitha Vallabhaneni', 'M.S. Human Computer Interaction & Design', 'Indiana University | May 2023 (Expected)']\
+        ['ash', 'Aswati Panicker', 'Ph.D. Health Informatics', 'Indiana University | May 2025'],\
+        ['colin', 'Colin LeFevre', 'B.S. Informatics', 'Indiana University | May 2024'],\
+        ['forum', 'Forum Modi', 'Ph.D. Health Informatics', 'Indiana University | May 2027'],\
+        ['nikhil', 'Nikhil Dinesh', 'M.S. Human Computer Interaction & Design', 'Indiana University | May 2023'],\
+        ['sitha', 'Sitha Vallabhaneni', 'M.S. Human Computer Interaction & Design', 'Indiana University | May 2023']\
     ]
     return teamInfo
