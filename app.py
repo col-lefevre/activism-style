@@ -108,6 +108,12 @@ def nextsteps(stepType, styleName):
 @app.route('/data')
 def privacy():
     return render_template('data.html')
+
+@app.route('/data/clear')
+def dataclear():
+    session.clear()
+    return redirect(url_for('privacy'))
+
     
 @app.route('/about')
 def about():
