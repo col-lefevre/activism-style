@@ -25,18 +25,18 @@ def getStyleBlurb():
 # Get question text for Q1-12
 def getQDesc(qNum):
     qDescs = [\
-        (1, "explain controversial issues"), \
-        (1, "openly support causes important to you in public"), \
+        (1, "educate people on controversial issues"), \
+        (1, "take a stand on causes important to you"), \
         (1, "plan support out of the public view"), \
-        (1, "provide resources and information to other advocates"), \
+        (1, "donate money or other resources to causes important to you"), \
         (1, "help people one-on-one"), \
         (2, "your privacy and/or anonymity"), \
         (2, "your time constraints"), \
-        (2, "interactions with people who disagree with your beliefs"), \
-        (2, "judgment from your peers and/or family about your beliefs"), \
+        (2, "interactions with people who disagree with your activism"), \
+        (2, "judgment from your peers and/or family about your activism"), \
         (3, "donate money"), \
         (3, "donate your time or supplies/resources"), \
-        (3, "share information to educate or inform the public or other advocates")\
+        (3, "share information to the public or other activists")\
     ]
     return f'As an activist, you would {qDescVerb(qDescs[qNum-1][0])} {qDescs[qNum-1][1]}.'
 
@@ -44,7 +44,7 @@ def qDescVerb(prefixNum):
     if prefixNum == 1:
         return 'like to'
     elif prefixNum == 2:
-        return 'worried about'
+        return 'be worried about'
     elif prefixNum == 3:
         return 'find it easy to'
 
