@@ -36,7 +36,7 @@
             {% for style in style_blurbs %}
             <div class="flexbox-activist">
                 <a href="{{url_for('styles', styleName=style[0])}}">    
-                    <img class="activist-pic" src="{{url_for('static', filename='images/styles/' + style[0] + '.png')}}">
+                    <div class="activist-pic"><img class="u-full-width" src="{{url_for('static', filename='images/styles/' + style[0] + '.png')}}"></div>
                 </a>
                 <div class="flexbox-info">
                     <div class="font-domine2">The {{style[1]}}</div>
