@@ -77,7 +77,7 @@
 
     .activist-pic {
         width: 30vw;
-        height: fit-content;
+        height: auto;
     }
 }
 
