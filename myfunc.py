@@ -12,14 +12,13 @@ def convertShortToLong(styleShort):
 # Get short, snappy descriptions for index
 def getStyleBlurb():
     styleBlurbs = [\
-        ['edu', convertShortToLong('edu'), "Educators are ready at a moment's notice to share resources and information related to reproductive rights"],\
-        ['emp', convertShortToLong('emp'), "Empaths help those seeking reproductive care, whether by lending a sympathetic ear or offering a ride to a local clinic"],\
-        ['org', convertShortToLong('org'), "Organizers ensure activist events related to reproductive rights, such as abortion access, are successful and run smoothly"],\
-        ['phi', convertShortToLong('phi'), "Philanthropists support reproductive rights by increasing the resources of abortion funds and other pro-choice organizations"],\
-        ['pro', convertShortToLong('pro'), "Protestors visibly share their opinions on reproductive rights like abortion access and ensure their voices are heard"]\
+        ['edu', convertShortToLong('edu'), "Curious, questioning, and perceptive, a voice of clarity on abortion access."],\
+        ['emp', convertShortToLong('emp'), "Compassionate, relatable, and caring, a helping hand for abortion seekers."],\
+        ['org', convertShortToLong('org'), "Creative, coordinated, and strategic, the behind-the-scenes hero of activist events."],\
+        ['phi', convertShortToLong('phi'), "Resourceful, generous, and benevolent, a benefactor of abortion activists."],\
+        ['pro', convertShortToLong('pro'), "Fearless, passionate, and confident, a front line champion for abortion access."]\
     ]
     return styleBlurbs
-
 
 # CONTENT -> /quiz
 # Get question text for Q1-12
@@ -470,28 +469,31 @@ def getStyleRanks(answerList):
 def getStyleInfo(styleName):
     styleInfo = {\
         'edu': {'title': convertShortToLong('edu'), 'adj': ['curious', 'questioning', 'perceptive'],\
-            'desc': "As an Educator, you make an impact through the power of your knowledge. Educators are ready at a moment's notice to share resources and information related to reproductive rights. You can spread information about abortion access to friends in person, or spread that information virtually to your social media followers. "},\
+            'desc': ["As an Educator, you make an impact through the power of your knowledge. Educators are ready at a moment's notice to share resources and information related to reproductive rights.", "By spreading information about abortion access, either in person or virtually, you educate people about their ability to access abortion and raise awareness about reproductive rights."]},\
         'emp': {'title': convertShortToLong('emp'), 'adj': ['compassionate', 'relatable', 'caring'],\
-            'desc': "As an Empath, you make an impact through your compassion. Empaths help those seeking reproductive care, whether by lending a sympathetic ear or offering a ride to a local clinic. You can listen to stories of those who have had difficulty accessing an abortion or other reproductive care, or share stories, with permission, to inspire others to get involved."},\
+            'desc': ["As an Empath, you make an impact through your compassion. Empaths help those seeking abortions, whether by lending a sympathetic ear or offering a ride to a local clinic.", "By listening to and helping people one-one-one, you know powerful stories about people’s abortion experiences and, with permission, can share these stories to get others involved."]},\
         'org': {'title': convertShortToLong('org'), 'adj': ['creative', 'coordinated', 'strategic'],\
-            'desc': "As an Organizer, you make an impact by working behind the scenes. Organizers ensure activist events related to reproductive rights, such as abortion access, are successful and run smoothly. You can start your own activism event for reproductive rights, or help existing organizers and events manage their events."},\
+            'desc': ["As an Organizer, you make an impact by working behind the scenes. Organizers ensure activist events related to reproductive rights, such as abortion access, are successful and run smoothly.", "By starting your own events for abortion access or helping existing organizers and events, you bring together activists and empower them to fight for access to abortion."]},\
         'phi': {'title': convertShortToLong('phi'), 'adj': ['resourceful', 'generous', 'benevolent'],\
-            'desc': "As a Philanthropist, you make an impact by providing resources. Philanthropists support reproductive rights by increasing the resources of abortion funds and other pro-choice organizations. You can donate money to activist organizations, clinics, and abortion funds, or offer resources such as venues for events."},\
+            'desc': ["As a Philanthropist, you make an impact by providing resources. Philanthropists support reproductive rights by increasing the resources of abortion funds and other pro-choice organizations.", "By donating money and/or other resources to activist organizations, clinics, and abortion funds, you support access to abortion and activism for reproductive rights."]},\
         'pro': {'title': convertShortToLong('pro'), 'adj': ['fearless', 'passionate', 'confident'],\
-            'desc': "As a Protestor, you make an impact by publicly advocating for reproductive rights. Protestors visibly share their opinions on reproductive rights like abortion access and ensure their voices are heard. You can attend local protests and marches to support issues like abortion access in your local community, or travel to larger protests to support the broader cause."}\
+            'desc': ["As a Protestor, you make an impact by publicly advocating for reproductive rights. Protestors visibly share their opinions on reproductive rights like abortion access and ensure their voices are heard.", "By attending protests and marches to support abortion access, you voice the concerns and opinions of many other activists and help work towards better access to abortion for all."]}\
         }
     return styleInfo[styleName]
 
 # Get intro text for a style
-def getStyleIntro(styleName, quizStatus, styleRanks):
-    styleIntro = {x: 'Your activism style could also be' for x in getShortStyle()}
+def getStyleIntro(styleName, quizStatus, styleRanks, stylePerc):
+    returnStr = ''
     if quizStatus:
-        for i, adj in enumerate(['primary', 'secondary', 'tertiary']):
-            styleIntro[styleRanks[i]] = f'Your {adj} activism style is'
+        adjList = ['primary', 'secondary', 'tertiary']
+        indexNum = int(styleRanks.index(styleName))
+        if 0 <= indexNum <= 2:
+            returnStr = f'Your {adjList[indexNum]} activism style ({stylePerc[indexNum]}%) is'
+        elif 3<= indexNum <= 4:
+            returnStr = f'Your activism style ({stylePerc[indexNum]}%) could also be'
     else:
-        for k in styleIntro.keys():
-            styleIntro[k] = 'Your activism style could be'
-    return styleIntro[styleName]
+        returnStr = 'Your activism style could be'
+    return returnStr
 
 # Get carousel order for style page
 def getStyleNav(styleName, quizStatus, styleRanks):
@@ -541,7 +543,7 @@ def getMapDesc(styleName):
             'I used my marketing experience to help a local advocacy organization recruit volunteers'],\
         'phi': \
             ['I donated to a local abortion fund to support women in my community',\
-            'As a local business owner, I signed an open letter urging lawmakers to support access to abortion'],\
+            'I offered my local business as a venue for a pro-choice fundraiser'],\
 
         'pro': \
             ["I attended a women's rights march to protest bodily autonomy being restricted",\
@@ -550,81 +552,103 @@ def getMapDesc(styleName):
     }
     return mapDescDict[styleName]
 
-
-# CONTENT -> /nextsteps
-# Get content for next steps
-def getNextSteps(stepType, styleName):
-    eventInfo = {\
-        'Informational Events': {\
-            'edu': [('Educators', ' can share important news and local developments with attendees'), ('As an ', 'educator', ',you can be a vital part of conversations at informational events. By sharing important news and local developments with attendees, you can empower others to support reproductive rights in an informed, conscious manner.')],\
-            'emp': [('Empaths', ' can listen to the stories of attendees and provide emotional support'), ('As an ', 'empath', ', you can be an important part of community building at informational events. By empathizing with attendees, listening to their stories, and providing emotional support, you can encourage others to share their experiences and be part of a safe, welcoming community.')],\
-            'org': [('Organizers', ' can connect likeminded attendees and help them form groups'), ('As an ', 'organizer', ', you can have a big impact on community building at informational events. By connecting likeminded attendees with one another, you can help form powerful groups of local community members interested in reproductive rights activism.')],\
-            'phi': [('Philanthropists', ' can encourage others to give by donating to the fundraiser'), ('As a ', 'philanthropist', ', you can be a crucial part of successful informational events. By publicly donating to fundraisers, you can encourage attendees to attend more events and to get more involved in reproductive rights activism, as well as giving event organizers the funds to create more events in the future.')],\
-            'pro': [('Protestors', ' can be vocal pro-choice attendees that make others more comfortable'), ('As a ', 'protestor', ', you can make informational events more welcoming and comfortable for potential attendees. By attending and voicing about your pro-choice beliefs, you can make like-minded attendees more willing to share their beliefs and engage with their peers.')]},\
-        'Letter Writing Events': {\
-            'edu': [('Educators', ' can share information on notable local legislators'), ('As an ', 'educator', ', you can be a crucial part of letter writing events. By sharing important information on current reproductive rights legislation and the legislators responsible, you can help attendees decide the content and recipients of their letters.')],\
-            'emp': [("Empaths", " can share stories they've heard to include in letters"), ("As an ", "empath", ", you can have a big impact on letter writing events. By sharing the powerful stories you've heard and have permission to share, you can give attendees persuasive, important stories to include in their letters.")],\
-            'org': [('Organizers', ' can help attendees coordinate letter topics and recipients'), ('As an ', 'organizer', ', you can make letter writing events more coordinated and successful. Both helping attendees coordinate letter topics and recipients, you can help the event have a stronger impact on those legislators.')],\
-            'phi': [('Philanthropists', ' can fund letter writing materials for virtual attendees'), ('As a ', 'philanthropist', ', you can be a vital part of letter writing events. Even for virtual events, you can fund letter writing materials, compensating attendees for stamps, paper, and other materials they bought for themselves.')],\
-            'pro': [('Protestors', ' can explain how to be vocal and passionate about your beliefs in a letter'), ('As a ', 'protestor', ', you can be an important part of letter writing events. As someone comfortable sharing your beliefs publicly, you can help attendees do the same in their letters, helping them feel more comfortable writing to local legislators.')]},\
-        'Protests & Marches': {\
-            'edu': [('Educators', ' can share recent developments and news to encourage potential activists to attend'), ('As an ', 'educator', ', you can have a big impact on protests. By sharing recent legislative developments, you can encourage potential activists to attend and lend their voices to the cause.')],\
-            'emp': [("Empaths", " can create a welcoming protest atmosphere by listening to attendees' experiences"), ("As an ", 'empath' ", you can make a protest more welcoming to potential activists. By listening to and empathizing with attendees' experiences, you can help them become more comfortable sharing their stories and protesting for reproductive rights.")],\
-            'org': [('Organizers', ' can help manage the event and advertise it to the local activist community'), ('As an ', 'organizer', ', you can be a vital part of protests. By managing the different parts of the protest and advertising it to the local activist community, you can help the protest run smoothly and have a bigger impact on the fight for reproductive rights.')],\
-            'phi': [('Philanthropists', ' can help fund event resources, advertisement, and security'), ('As a ', 'philanthropist', ', you can be an important part of protests. By contributing money and other resources, you can help fund security for protestors, advertisements for potential attendees, and other important elements of a successful protest.')],\
-            'pro': [('Protestors', ' can be the vocal, passionate, and active part of the protest'), ('As a ', 'protestor', ', you can be a crucial part of protests. By attending and vocally supporting your beliefs, you make the protest and its values heard by those in your community, and inspire community members to support reproductive rights.')]}\
-        }
-    methodInfo = {\
+# Get 'Get Involved' recs for a style
+def getInvolved(styleName):
+    styleInvolveDict = {\
         'edu': [\
-            ('Organize your resources and information', ('As an ', 'educator', ', you are equipped to share important news and resources with community members. Keeping that news and resources organized will make sharing far easier.')),\
-            ('Encourage people to get involved with activism', ('Anyone can be an activist. As an ', 'educator', ', you have the information to demonstrate that, and can use that information to encourage people to get involved.')),\
-            ('Share important information however you can', ('As an ', 'educator', ', you have information that others lack. Finding ways to share that information, whether in-person or online, is a great way to support reproductive rights.'))],\
+            # Suggestion 1
+            {'preview': [\
+                "Explain recent legal developments on abortion access",\
+                "As of late 2022, the legal status of abortion varies by state and legislative changes. As an educator, you can explain recent developments and keep people informed."\
+            ], 'info': [\
+                ("How can I keep track of legal developments to share with others?", "It's important to have a list, either physical or mental, of trustworthy news outlets. Once you have this list, you can periodically check recent articles, particularly on the issue of abortion, to learn about developments. This will also help provide sources for anyone who asks."),\
+                ("Who should I explain legal developments to?", "You can explain legal developments to anyone who you think could benefit from knowing the information and who you are comfortable discussing access to abortion with. Reproductive rights affect everyone, and so anyone could benefit from accurate information on abortion's legality in their location!")\
+            ]},\
+            # Suggestion 2
+            {'preview': [\
+                "Post educational content online",\
+                "As an educator, you are equipped to share accurate, pertinent information on abortion access. Sharing this information can help people stay informed on the topic and raise awareness about access to abortion."\
+            ], 'info': [\
+                ("What content should I be posting online?", "There's a lot of helpful information related to abortion: how to get access to a pregnancy test, where to go for an abortion, etc. So long as the information could potentially help seeking abortion seeker, sharing that information is a helpful and valid form of activism."),\
+                ("Where should I post the content online?", "You could post the content on your social media of choice, or on a different platform that feels more relevant. Wherever you choose to post, it's also helpful to think about whether or not you'd like to remain anonymous beforehand.")\
+            ]}],      
         'emp': [\
-            ('Volunteer at local abortion clinics', ("As an ", "empath", ", you excel at listening to others' stories and validating their experiences. Volunteering at local clinics can give you an opportunity to do just that!")),\
-            ('Join online support groups for abortion seekers', ('Abortion seekers need support from empathetic listeners. As an ', 'empath', ', you can provide the support they need during this difficult time.')),\
-            ('Consider anonymously sharing your experiences', ("As an ", "empath", ", you aren't just good at listening to experiences: you're also great at sharing experiences. Consider sharing your own anonymously to inspire others to get involved!"))],\
+            # Suggestion 1
+            {'preview': [\
+                "Join online support communities for abortion seekers",\
+                "Abortion seekers need support from empathetic listeners, and often search for that support online. As an empath, you can join online support communities and provide the support they need during this difficult time."\
+            ], 'info': [\
+                ("How can I find online support communities to join?", "Online support communities exist across many different social media platforms. Two particularly common platforms are Facebook and Reddit. You could either search for Facebook and Reddit communities you'd like to join and provide support through, or look for communities on a different social media that you prefer."),\
+                ("What are some online support communities for Bloomington specifically?", "There aren't many public-facing support communities for abortion seekers in Bloomington specifically. Some broader groups, such as the r/Bloomington subreddit, are vocally pro-choice. You could either join broader groups like these or look for support communities not focused on Bloomington specifically."),\
+                ("What will I do as a community member?", "As a member of an online support community for abortion seeker, your primary task is to be available. Members looking for an empathetic ear don't post at regularly scheduled intervals—they post when they most need support. So, set aside some time to be available and read through recent community posts.")\
+            ]},\
+            #Suggestion 2
+            {'preview': [\
+                "Volunteer at local abortion clinics",\
+                "As an empath, you excel at listening to others' stories and validating their experiences. Volunteering at local clinics can give you an opportunity to help people one-on-one and support vulnerable community members."\
+            ], 'info': [\
+                ("How can I find abortion clinics to volunteer at?", "You can look for potential abortion clinics to volunteer at by using websites such as ProChoice.org or AbortionFinder.org. You could also use search engines, e.g., Google, to look for clinics in specific towns or other pro-choice organizations looking for volunteers. Be sure to distinguish between pro-choice¬ and pro-life clinics. Pro-life clinic, also known as women's health centers, often use similar language to their pro-choice counterparts but do not support access to abortion."),\
+                ("Where can I volunteer in Bloomington?", "If you're wanting to volunteer in Bloomington, IN specifically, two options are: Planned Parenthood, a pro-choice abortion clinic, or All-Options, a pro-choice organization supporting abortion seekers"),\
+                ("What will I do as a volunteer?", "Volunteers' roles and responsibilities vary, based on an individual clinic's current needs. Some common volunteer activities are escorting patients, entering data, assisting with education programs. If you have a specific role in mind, you can always contact the clinic and ask!")\
+            ]}],\
         'org': [\
-            ('Research local organizations to get involved with', ('As an ', 'organizer', ', you excel at managing complicated networks of people and resources. Local organizations focused on reproductive rights can benefit from your expertise!')),\
-            ("Offer to support local businesses' activism work", ('Local businesses are often interested in supporting important causes like reproductive rights but may not be sure how to do so. As an ', 'organizer', ', you have the skills they need!')),\
-            ('Get involved with the local protest community', ('Protests are an important part of fighting for reproductive rights. As an ', 'organizer', ', you have a lot of valuable management skills that can help create successful protests.'))],\
+            # Suggestion 1
+            {'preview': [\
+                "Volunteer to help organize existing events",\
+                "Existing events are an important part of fighting for reproductive rights. As an organizer, you have valuable management skills that can help these events be successful."\
+            ], 'info': [\
+                ("How can I find existing events?", "Where to find will on the location and organization. Broadly, online search engines, e.g., Google, can help you find you events in an area you are familiar with. Alternatively, if you're familiar with the area, you could look at in-person billboards and contact organizations you are aware of."),\
+                ("Are there any events to help with in Bloomington?", "Many of the larger scale protests occur in Indianapolis, not Bloomington. But there are many small events, such as fundraisers or letter writing, that happen in Bloomington successfully. There isn't one overarching organizer for all these events, so you'll need to look event by event."),\
+                ("How exactly can I help organize these events?", "There are many valuable skills you could bring to managing an event. You could create fliers to advertise the event, secure a venue for the event, find potential donors to fund the event, etc.")\
+            ]},\
+            #Suggestion 2
+            {'preview': [\
+                "Organize new pro-choice events to support abortion access",\
+                "As an organizer, you can also create new events that support access to abortion. From fundraisers to protests, there are a wide variety of ways you can create a supportive event."\
+            ], 'info': [\
+                ("What kind of event should I create?", "The type of event you create usually corresponds to the impact you want to have. Trying to donate money to an abortion clinic? Hold a fundraiser! Want to raise awareness about abortion access? Have a protest or a march!  Worried about upcoming legislative? Create a letter writing event targeting local legislators."),\
+                ("How will I get the resources in Bloomington to fund the event?", "Getting resources to fund an event is difficult, and there is no easy answer. But, many Bloomington residents are passionate about supporting abortion access. So, a good starting point is connecting with likeminded advocates, pooling your resources, and decided what type of event those resources would allow you to host."),\
+                ("Where in Bloomington can I host the event?", "You could host an event in a public area, or rent a venue. Another option specifically for Bloomington is contacting local business owners. Several Bloomington businesses have previously hosted pro-choice events like fundraisers. Try to target businesses that explicitly self-describe as women owned, pro-choice, and/or LGBTQIA+ affirming.")\
+            ]}],\
         'phi': [\
-            ('Donate to abortion clinics in your area', ('Local abortion clinics need both money and resources to continue operating. As a ', 'philanthropist', ', you can donate the needed resources and empower the clinic to continue helping people in need.')),\
-            ('Provide local activists with resources', ('Local activists need resources to create events that support reproductive rights. As a ', 'philanthropist', ', you can support their effort and community growth by contributing resources!')),\
-            ('Research potential abortion funds to support', ('Beyond clinics, there are also funds that support abortion seekers. As a ', 'philanthropist', ', you can donate money to these funds and help abortion seekers in need.'))],\
+            # Suggestion 1
+            {'preview': [\
+                "Donate to abortion clinics and pro-choice organizations",\
+                "Local abortion clinics and pro-choice organizations need both money and resources to continue operating. As a philanthropist, you can donate the needed resources and empower the clinic to continue helping people in need."\
+            ], 'info': [\
+                ("How do I find clinics and organizations to support?", "Using online resources like ProChoice.org or AbortionFinder.org can help you verified clinics to donate to. Organizations can be more difficult to find. You can use search engines, e.g., Google, to find organizations and their related events. Based on the information available, you'll have to make a decision on whether you can trust them with your resources."),\
+                ("What kind of resources should I donate?", "What resources are needed will depend on the specific clinic and its needs. Generally, monetary donations are always welcomes; if there are other resources you would like to donate, you can contact the clinic or organization and inquire if they would accept that donation."),\
+                ("Where in Bloomington can I donate?", "If you're wanting to donate to Bloomington organization specifically, two options are: Planned Parenthood, a pro-choice abortion clinic, or All-Options, a pro-choice organization supporting abortion seekers.")\
+            ]},\
+            #Suggestion 2
+            {'preview': [\
+                "Provide local activists with resources",\
+                "Local activists who are passionate about supporting abortion access need resources to do so. Providing them those resources is another way you, as a philanthropist, can contribute to reproductive rights activism."\
+            ], 'info': [\
+                ("How do I find activists to support?", "Finding likeminded, trustworthy activists to support can be difficult, and there is no one way to do so. Broadly, talk to local friends and/or acquaintances of yours to get a better idea of who else is passionate about supporting abortion access, and how you could possibly support them."),\
+                ("What kind of resources do activists need?", "The type of resources needed will depend on the activist. Protestors might need funds to travel to a march, whereas Organizers might need to a venue. Once you have found activists to support, work with them to understand how you can best support their unique needs.")\
+            ]}],\
         'pro': [\
-            ('Publicly and vocally support your beliefs', ('As a ', 'protestor', ', you are more comfortable supporting reproductive rights publicly than others. By supporting publicly, you can inspire others to also support!')),\
-            ('Attend protests and marches', ('As a ', 'protestor', ', your comfort with public support makes you a great fit for protests and marches. Attending these vents could be a great for you to support reproductive rights!')),\
-            ('Encourage non-protestors to get involved', ("There are many paths to activism for reproductive rights besides protesting. As a ", "protestor", ", you are most often associated with activism—use this to encourage people to get involved as activists. Everyone's talents are welcome!"))]\
+            # Suggestion 1
+            {'preview': [\
+                "Attend protests and marches",\
+                "As a protestor, your comfort with public support makes you a great fit for protests and marches. Attending these events can be a great way for you to support reproductive rights!"\
+            ], 'info': [\
+                ("How do I find protests/marches to attend?", "Contacting local organizations or searching online, e.g., with Google, can be good ways to identify upcoming protests and marches. Be sure to research the organizers and their security measures before attending to protect yourself."),\
+                ("Are there any protests/marches in Bloomington?", "Most protests and marches usually happen in Indianapolis, not Bloomington. But it is still possible for a protest or march to occur in Bloomington! Keep an eye on local Bloomington social media groups, e.g., r/Bloomington subreddit, more any discussion of protests."),\
+                ("What do I do at protests/marches?", "There are many different ways to protests. Some protestors prefer to yell slogans; others wave signs; and others just stand in solidarity. What precisely you do at protests and marches will depend on what you feel comfortable doing—protest in whatever way works for you!")\
+            ]},\
+            #Suggestion 2
+            {'preview': [\
+                "Share your beliefs on abortion access",\
+                "As a protestor, you are more comfortable taking a public stance on controversial stance than others. By sharing your beliefs, you raise awareness and encourage others less willing to share to nonetheless get involved."\
+            ], 'info': [\
+                ("What beliefs should I share?", "Any strongly held convictions on abortion access, reproductive rights, or other pro-choice issues would be helpful to share. If something feels relevant for others to know about post-Roe v. Wade, definitely share that!"),\
+                ("How should I share my beliefs, and with whom?", "You can share your beliefs however and with whomever you would like.  Whether you’re sharing on Instagram or at family dinner, with lifelong friends or work acquaintances, sharing your beliefs will be a powerful statement. Share where you feel most comfortable doing so.")\
+            ]}]\
         }
-    
-    returnInfo = []
 
-    if stepType == 'events':
-        for key, value in eventInfo.items():
-            styleList = getShortStyle()
-            styleList.remove(styleName)
-            returnInfo.append([key, value[styleName][1], [value[style][0] for style in styleList]])
-
-    elif stepType == 'methods':
-        returnInfo = methodInfo[styleName]
-
-    return returnInfo
-
-# Get intro blurb for next steps
-def getNextStepsIntro(stepType, styleName):
-    indefArticle = None
-    if styleName in ['phi', 'pro']:
-        indefArticle = 'a'
-    else:
-        indefArticle = 'an'
-    
-    actionPhrase = None
-    if stepType == 'events':
-        actionPhrase = 'to contribute to activism events'
-    else:
-        actionPhrase = 'to get more involved in activism'
-
-    return f'How {actionPhrase} as {indefArticle} {convertShortToLong(styleName)}:'
+    return styleInvolveDict[styleName]
 
 # CONTENT -> /about-us
 def getTeamInfo():

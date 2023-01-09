@@ -11,7 +11,16 @@ def isQuizDone():
     return session.get('quizDone', False)
 
 def getStyleRank():
-    return session.get('styleRanks', None)
+    styleRank = session.get('styleRanks', None)
+    if styleRank:
+        styleRank = list(styleRank.keys())
+    return styleRank
+
+def getStylePercent():
+    stylePercent = session.get('styleRanks', None)
+    if stylePercent:
+        stylePercent = list(stylePercent.values())
+    return stylePercent
 
 def getDefaultStyle():
     styleRank = getStyleRank()
@@ -63,8 +72,9 @@ def result():
         qAnswers.append(answer)
     
     rankedStyles = myfunc.getStyleRanks(qAnswers)
+    print(rankedStyles)
     session['quizDone'] = True
-    session['styleRanks'] = [x[0] for x in rankedStyles]
+    session['styleRanks'] = {x[0]:x[1] for x in rankedStyles}
 
     return render_template('results.html', \
         style1_name=rankedStyles[0][2], style1_perc=rankedStyles[0][1], style1_img=url_for('static', filename=('images/styles/'+rankedStyles[0][0]+'.png')),\
@@ -72,7 +82,6 @@ def result():
         style3_name=rankedStyles[2][2], style3_perc=rankedStyles[2][1], style3_img=url_for('static', filename=('images/styles/'+rankedStyles[2][0]+'.png')))
 
 @app.route('/style')
-@app.route('/styles')
 def style():
     return redirect(url_for('styles', styleName=getDefaultStyle()))
 
@@ -80,7 +89,7 @@ def style():
 def styles(styleName):
     styleInfo = myfunc.getStyleInfo(styleName)
     return render_template('style.html', \
-        style_intro = myfunc.getStyleIntro(styleName, isQuizDone(), getStyleRank()), \
+        style_intro = myfunc.getStyleIntro(styleName, isQuizDone(), getStyleRank(), getStylePercent()), \
         style_nav=myfunc.getStyleNav(styleName, isQuizDone(), getStyleRank()), \
         style_title = styleInfo['title'], \
         style_adj = styleInfo['adj'], \
@@ -88,22 +97,14 @@ def styles(styleName):
         style_img=url_for('static', filename=('images/styles/'+styleName+'.png')),\
         style_pos=myfunc.getMapPos(styleName), \
         style_descs=myfunc.getMapDesc(styleName),\
+        style_involved=myfunc.getInvolved(styleName),\
+        style_rank=getStyleRank(),\
+        quiz_status=isQuizDone(),\
         style_name=styleName)
 
-@app.route('/nextsteps')
-@app.route('/nextsteps/')
-@app.route('/nextsteps/<string:stepType>/')
-def nextstep(stepType='methods'):
-    return redirect(url_for('nextsteps', stepType=stepType, styleName=getDefaultStyle()))
-
-@app.route('/nextsteps/<string:stepType>/<string:styleName>')
-def nextsteps(stepType, styleName):
-    return render_template('nextsteps.html',\
-        step_intro = myfunc.getNextStepsIntro(stepType=stepType, styleName=styleName),\
-        step_info = myfunc.getNextSteps(stepType=stepType, styleName=styleName),\
-        step_type=stepType,\
-        style_name=styleName\
-        )
+@app.route('/styles')
+def exploreStyles():
+    return redirect(url_for('styles', styleName=getDefaultStyle()))
 
 @app.route('/data')
 def privacy():

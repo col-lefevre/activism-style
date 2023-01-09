@@ -16,27 +16,53 @@
                     </div>
                 </div>
                 <div class="flex-adj">{% for adj in style_adj %}<span class="font-inter2">{{adj}}</span>{% endfor %}</div>
-                <div class="font-inter3">{{style_desc}}</div>
-                <a class="custom-button type1 font-inter4" href="{{url_for('nextsteps', stepType='methods', styleName=style_name)}}">Learn more</a>
+                <div class="font-inter3">
+                    <div>{{style_desc[0]}}</div>
+                    <div style="margin-top: 5px;">{{style_desc[1]}}</div>
+                </div>
+                {% if not quiz_status %}
+                <a class="custom-button type1 font-inter4" href="{{url_for('exploreStyles')}}">All Styles</a>
+                {% endif %}
             </div>
         </div>
     </div>
+
+    {% if quiz_status %}
     <div class="style-carousel">
         <a {% if style_nav['prev'] == 'disabled' %}class="disabled"{% else %}href="{{url_for('styles', styleName=style_nav['prev'])}}"{% endif %}>
             <img src="{{url_for('static', filename='images/icons/arrow.png')}}">
         </a>
         {% for i in range(5) %}
-        <div class="{% if style_nav['current'] == i %}current{% endif %}"></div>
+        <a href="{{url_for('styles', styleName=style_rank[i])}}" class="{% if style_nav['current'] == i %}current{% endif %} nav-circle"></a>
         {% endfor %}
         <a {% if style_nav['next'] == 'disabled' %}class="disabled"{% else %}href="{{url_for('styles', styleName=style_nav['next'])}}"{% endif %}>
             <img class="reverse" src="{{url_for('static', filename='images/icons/arrow.png')}}">
         </a>
     </div>
+    {% endif %}
+
 </div>
 {% endblock %}
 
 {% block content3 %}
 <script>
+    // Get Involved
+    $(document).ready(function() {
+        $('.learn-more').click(function() {           
+            var thisEle = $(this)
+            var nextEle = thisEle.next()
+            if (thisEle.hasClass('expand')) {
+                thisEle.removeClass('expand');
+                nextEle.removeClass('expand');
+            }
+            else {
+                thisEle.addClass('expand');
+                nextEle.addClass('expand');
+            }
+        });          
+    });
+
+    // Community Map
     $(document).ready(function() {
         $('.map-img').click(function() {           
             var desc = $(this).next();
@@ -50,7 +76,31 @@
     });
 </script>
 <div class="container">
-    <div class="row">
+    <!-- Get Involved -->
+    <div class="row" id="involve-head">
+        <div class="font-domine3">Get Involved</div>
+        <div class="font-inter3">Read two different ways to get involved as an activist {{style_title}}!</div> 
+    </div>
+    {% for entry in style_involved %}
+    <div class="entry-container">
+        <div class="font-domine2" style="font-weight: 700;">{{entry['preview'][0]}}</div>
+        <div class="font-inter3">{{entry['preview'][1]}}</div>
+        <div class="learn-more">
+            <span class="font-inter2">More Info</span>
+            <img src="{{url_for('static', filename='images/icons/arrow.png')}}">
+        </div>
+        <div class="hidden-content">
+            {% for info in entry['info'] %}
+            <div class="font-domine2">{{info[0]}}</div>
+            <div class="font-inter2">{{info[1]}}</div>
+            {% endfor %}
+        </div>
+        
+    </div>
+    {% endfor %}
+
+    <!-- Community Map-->
+    <div class="row" id="comm-map">
         <div class="font-domine3">Community {{style_title}}s</div>
         <div class="font-inter3"><span style="font-style: italic; font-weight: 500;">Click</span> the activists on the map to read anonymized stories from {{style_title}}s!</div>     
     </div>
