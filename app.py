@@ -104,8 +104,7 @@ def styles(styleName):
 
 @app.route('/styles')
 def exploreStyles():
-    return redirect(url_for('styles', styleName=getDefaultStyle()))
-
+    return render_template('explore.html')
 @app.route('/data')
 def privacy():
     return render_template('data.html')
@@ -120,4 +119,3 @@ def dataclear():
 def about():
     return render_template('about.html',\
         team_info=myfunc.getTeamInfo())
-
