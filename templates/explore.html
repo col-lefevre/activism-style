@@ -1,22 +1,40 @@
 {% extends "page1.html" %}
 
-{% block title2 %}About Us{% endblock %}
+{% block title2 %}Explore Styles{% endblock %}
 {% block styles2 %}<link rel="stylesheet" href="{{url_for('static', filename='css/explore.css')}}">{% endblock %}
 
 {% block content2 %}
 <div class="container">
     <div class="row">
-        <div class="seven columns">
-            <div class="font-domine4">Meet the activists</div>
-            <div class="font-inter3">Blah blah blah.</div>
+        <div class="six columns">
+            <div class="font-domine4" style="padding-bottom: 15px;">Explore styles</div>
+            <div class="font-inter3">Learn more about the five activism styles, and discover one which feels right for you! Or, take the quiz and get a customized recommendation.</div>
+            <a href="{{url_for('quiz')}}" class="custom-button type1 font-inter4">Take quiz</a>
         </div>
     </div>
 </div>
 {% endblock %}
 {% block content3 %}
 <div class="container">
-    <div class="row">
-        
+    <div class="row" id="activist-header">
+        <div class="eight columns">
+            <div class="font-domine3">Meet the activists</div>
+        </div>
+    </div>
+    <div class="row" id="activist-desc">
+        <div class="flexbox-container">
+            {% for style in style_blurbs %}
+            <div class="flexbox-activist">
+                <a href="{{url_for('styles', styleName=style[0])}}">    
+                    <div class="activist-pic"><img class="u-full-width" src="{{url_for('static', filename='images/styles/' + style[0] + '.png')}}"></div>
+                </a>
+                <div class="flexbox-info">
+                    <div class="font-domine2">The {{style[1]}}</div>
+                    <div class="font-inter3">{{style[2]}}</div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
     </div>
 </div>
 {% endblock %}

@@ -22,10 +22,6 @@
 }
 
 /* EXPLORE */
-.explore-pic {
-    padding: 0px 25px;
-}
-
 @media (max-width: 549px) {
     .explore-pic {
         padding: 25px;

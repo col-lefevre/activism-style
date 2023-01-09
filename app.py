@@ -31,7 +31,7 @@ def getDefaultStyle():
 
 @app.route('/')
 def index():
-    return render_template('index.html', style_blurbs=myfunc.getStyleBlurb())
+    return render_template('index.html')
 
 @app.route('/quiz')
 def quiz():  
@@ -102,9 +102,10 @@ def styles(styleName):
         quiz_status=isQuizDone(),\
         style_name=styleName)
 
-@app.route('/styles')
-def exploreStyles():
-    return render_template('explore.html')
+@app.route('/explore')
+def explore():
+    return render_template('explore.html', style_blurbs=myfunc.getStyleBlurb())
+
 @app.route('/data')
 def privacy():
     return render_template('data.html')
@@ -113,7 +114,6 @@ def privacy():
 def dataclear():
     session.clear()
     return redirect(url_for('privacy'))
-
     
 @app.route('/about')
 def about():

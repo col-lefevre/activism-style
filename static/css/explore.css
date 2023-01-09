@@ -1,0 +1,92 @@
+/* FONT CHANGES */
+.font-domine2 {
+    font-weight: 700;
+    font-size: 16px;
+}
+
+#activist-desc .font-inter3 {
+    font-size: clamp(12px, 1.75vw, 14px);
+    line-height: 25px;
+}
+
+/**/
+.custom-button {
+    margin-top: 15px;
+    margin-bottom: 50px;
+    padding: 8px 16px;
+    filter: drop-shadow(0px 0px 3px rgb(228, 228, 228));
+}
+
+@media (max-width: 549px) {
+    .custom-button {    
+        margin-bottom: 25px;
+    }
+}
+
+/* ACTIVIST SHOWCASE */
+.flexbox-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    
+    justify-content: center;
+    flex-wrap: wrap;
+
+    width: 100%;
+    gap: 3.75%;
+}
+
+.flexbox-activist {
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+    gap: 5px;
+    
+    min-width: 150px;
+    width: 17%;
+}
+
+.flexbox-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+}
+
+.activist-pic {
+    width: 75%;
+    height: auto;
+    text-align: center;
+    margin: auto;
+    align-self: flex-start;
+}
+
+@media (max-width: 549px) {
+    .flexbox-container {
+        justify-content: start;
+        flex-direction: column;
+        gap: 15px;
+        flex-wrap: nowrap;
+    }
+
+    .flexbox-activist {
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100%;
+        max-width: 100%;
+        gap: 15px;
+        margin-top: none;
+    }
+
+    .activist-pic {
+        width: 30vw;
+    }
+}
+
+#activist-header {
+    margin-bottom: 20px;
+}
+
+#activist-desc {
+    margin-bottom: 75px;
+}

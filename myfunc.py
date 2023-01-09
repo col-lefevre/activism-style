@@ -655,7 +655,7 @@ def getTeamInfo():
     teamInfo = [\
         ['ash', 'Aswati Panicker', 'Ph.D. Health Informatics', 'Indiana University | May 2025'],\
         ['colin', 'Colin LeFevre', 'B.S. Informatics', 'Indiana University | May 2024'],\
-        ['forum', 'Forum Modi', 'Ph.D. Health Informatics', 'Indiana University | May 2027'],\
+        ['forum', 'Forum Modi', 'Ph.D. Informatics', 'Indiana University | May 2027'],\
         ['nikhil', 'Nikhil Dinesh', 'M.S. Human Computer Interaction & Design', 'Indiana University | May 2023'],\
         ['sitha', 'Sitha Vallabhaneni', 'M.S. Human Computer Interaction & Design', 'Indiana University | May 2023']\
     ]
