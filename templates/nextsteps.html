@@ -1,0 +1,58 @@
+{% extends "page2.html" %}
+
+{% block title2 %}Next Steps{% endblock %}
+{% block styles2 %}<link rel="stylesheet" href="{{url_for('static', filename='css/nextsteps.css')}}">{% endblock %}
+
+{% block content2 %}
+<script>
+    $(document).ready(function() {
+        $('.learn-more').click(function() {           
+            var thisEle = $(this)
+            var nextEle = thisEle.next()
+            if (thisEle.hasClass('expand')) {
+                thisEle.removeClass('expand');
+                nextEle.removeClass('expand');
+            }
+            else {
+                thisEle.addClass('expand');
+                nextEle.addClass('expand');
+            }
+        });          
+    });
+</script>
+
+<div class="font-domine2">{{step_intro}}</div>
+{% for entry in step_info %}
+    <div class="entry-container">
+        <div class="font-domine3">{{entry[0]}}</div>
+        <div class="learn-more">
+            <span class="font-inter2">Learn more</span>
+            <img src="{{url_for('static', filename='images/icons/arrow.png')}}">
+        </div>
+        <div class="hidden-content">
+            <div class="font-inter3">
+                <span>{{entry[1][0]}}</span><span class="style-emp">{{entry[1][1]}}</span><span>{{entry[1][2]}}</span>
+            </div>
+            {% if step_type == 'events' %}
+            <div class="font-inter3" style="margin-top: 10px;">The other activism styles also have important roles here:</div>
+            <ul>
+                {% for x in entry[2] %}
+                <li class="font-inter3">
+                    <span class="style-emp">{{x[0]}}</span><span>{{x[1]}}</span>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+{% endfor %}
+<div class="button-flexbox" style="margin-top: 25px;">
+    {% if step_type == 'methods' %}
+    <a class="custom-button type2 font-inter4" href="{{url_for('styles', styleName=style_name)}}">Back</a>
+    <a class="custom-button type1 font-inter4" href="{{url_for('nextsteps', stepType='events', styleName=style_name)}}">Next</a>
+    {% else %}
+    <a class="custom-button type2 font-inter4" href="{{url_for('nextsteps', stepType='methods', styleName=style_name)}}">Back</a>
+    <a class="custom-button type1 font-inter4" href="{{url_for('styles', styleName=style_name)}}">Finish</a>
+    {% endif %}
+</div>
+{% endblock %}
