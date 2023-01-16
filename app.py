@@ -93,7 +93,7 @@ def privacy():
 @app.route('/data/clear')
 def dataclear():
     session.clear()
-    return "Data cleared!"
+    return redirect(url_for('privacy'))
     
 @app.route('/about')
 def about():

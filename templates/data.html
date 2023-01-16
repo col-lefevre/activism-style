@@ -26,16 +26,5 @@
     <div class="font-inter3">By default, your data is automatically deleted when you fully close your browser. You can also manually clear your browser cookies, or use the button below.</div>
 </div>
 
-<script>
-    $(document).ready(function() {
-        $('#clear-data').click(function() { 
-            $.getJSON('/data/clear');
-        });
-    }
-</script>
-
-<div class="button-flexbox">
-    <div class="custom-button type2 font-inter4" onclick="history.back()">Back</div>
-    <a class="custom-button type1 font-inter4" href="" id="clear-data">Clear Data</a>
-</div>
+<a class="custom-button type1 font-inter4 u-pull-right" href="{{url_for('dataclear')}}">Clear Data</a>
 {% endblock %}
