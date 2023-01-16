@@ -1,24 +1,24 @@
 {% extends "page1.html" %}
 
-{% block title2 %}The {{style_title}}{% endblock %}
+{% block title2 %}The {{style_info['title']}}{% endblock %}
 {% block styles2 %}<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">{% endblock %}
 
 {% block content2 %}
 <div class="container">
     <div class="row flex-info">
-            <img id="img1" src="{{style_img}}">
+            <img id="img1" src="{{url_for('static', filename=('images/styles/'+style_name+'.png'))}}">
             <div id="info-box">
                 <div class="flex-info-mobile">
-                    <img id="img2" src="{{style_img}}">
+                    <img id="img2" src="{{url_for('static', filename=('images/styles/'+style_name+'.png'))}}">
                     <div id="info2">    
                         <div class="font-inter2">{{style_intro}}:</div>
-                        <div class="font-domine3">The {{style_title}}</div>
+                        <div class="font-domine3">The {{style_info['title']}}</div>
                     </div>
                 </div>
-                <div class="flex-adj">{% for adj in style_adj %}<span class="font-inter2">{{adj}}</span>{% endfor %}</div>
+                <div class="flex-adj">{% for adj in style_info['adj'] %}<span class="font-inter2">{{adj}}</span>{% endfor %}</div>
                 <div class="font-inter3">
-                    <div>{{style_desc[0]}}</div>
-                    <div style="margin-top: 5px;">{{style_desc[1]}}</div>
+                    <div>{{style_info['desc'][0]}}</div>
+                    <div style="margin-top: 5px;">{{style_info['desc'][1]}}</div>
                 </div>
                 {% if not quiz_status %}
                 <a class="custom-button type1 font-inter4" href="{{url_for('explore')}}">All Styles</a>
@@ -79,7 +79,7 @@
     <!-- Get Involved -->
     <div class="row" id="involve-head">
         <div class="font-domine3">Get Involved</div>
-        <div class="font-inter3">Read two different ways to get involved as an activist {{style_title}}!</div> 
+        <div class="font-inter3">Read two different ways to get involved as an activist {{style_info['title']}}!</div> 
     </div>
     {% for entry in style_involved %}
     <div class="entry-container">
@@ -101,8 +101,8 @@
 
     <!-- Community Map-->
     <div class="row" id="comm-map">
-        <div class="font-domine3">Community {{style_title}}s</div>
-        <div class="font-inter3"><span style="font-style: italic; font-weight: 500;">Click</span> the activists on the map to read anonymized stories from {{style_title}}s!</div>     
+        <div class="font-domine3">Community {{style_info['title']}}s</div>
+        <div class="font-inter3">Click the activists on the map to read anonymized stories from {{style_info['title']}}s!</div>     
     </div>
     <div class="row map-container">
         <img class="u-full-width" src="{{url_for('static', filename='images/map-4x3.png')}}">
@@ -111,7 +111,7 @@
             <div>
                 {% for style in style_pos %}
                     {% if i == style[0] %}
-                <img class="map-img" src="{{style_img}}">
+                <img class="map-img" src="{{url_for('static', filename=('images/styles/'+style_name+'.png'))}}">
                 <span class="{{style[1]}}-orient disabled font-inter3">{{style_descs.pop(0)}}</span>
                     {% endif %}
                 {% endfor %}

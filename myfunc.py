@@ -8,7 +8,7 @@ def getLongStyle():
 def convertShortToLong(styleShort):
     return getLongStyle()[getShortStyle().index(styleShort)]
 
-# CONTENT -> /
+# CONTENT -> /explore
 # Get short, snappy descriptions for index
 def getStyleBlurb():
     styleBlurbs = [\
@@ -26,7 +26,7 @@ def getQDesc(qNum):
     qDescs = [\
         (1, "educate people on controversial issues"), \
         (1, "take a stand on causes important to you"), \
-        (1, "plan support out of the public view"), \
+        (1, "support out of the public view"), \
         (1, "donate money or other resources to causes important to you"), \
         (1, "help people one-on-one"), \
         (2, "your privacy and/or anonymity"), \
@@ -56,7 +56,7 @@ def getQLabels(qNum):
         return qLabels[0]
 
 # Calculate style rankings
-def getStyleRanks(answerList):
+def calcStyleRanks(answerList):
     styleTally = [[x, 0] for x in getShortStyle()]
     totalWeights = 0
 
@@ -531,24 +531,24 @@ def getMapPos(styleName):
 def getMapDesc(styleName):
     mapDescDict = {\
         'edu': \
-            ['I created a social media page to share questions that concerned people can ask their local legislator',\
-            'I shared my beliefs on abortion access to my social media followers',\
-            "I educated the public as a speaker for a reproductive rights event"],\
+            ['I created a social media page to share questions that concerned people can ask their local legislator.',\
+            'I shared my beliefs on abortion access to my social media followers.',\
+            "I educated the public as a speaker for a reproductive rights event."],\
         'emp': \
-            ['I offer to give women rides to abortion clinics in or out of state',\
-            "I listen to peoples' stories, so they have a space to share without being judged",\
-            "I support abortion journeys by aiding abortion seekers as a volunteer"],\
+            ['I offer to give women rides to abortion clinics in or out of state.',\
+            "I listen to peoples' stories, so they have a space to share without being judged.",\
+            "I support abortion journeys by aiding abortion seekers as a volunteer."],\
         'org': \
-            ["I made flyers to advertise a local bakery's fundraiser sale",\
-            'I used my marketing experience to help a local advocacy organization recruit volunteers'],\
+            ["I made flyers to advertise a local bakery's fundraiser sale.",\
+            'I used my marketing experience to help a local advocacy organization recruit volunteers.'],\
         'phi': \
-            ['I donated to a local abortion fund to support women in my community',\
-            'I offered my local business as a venue for a pro-choice fundraiser'],\
+            ['I donated to a local abortion fund to support women in my community.',\
+            'I offered my local business as a venue for a pro-choice fundraiser.'],\
 
         'pro': \
-            ["I attended a women's rights march to protest bodily autonomy being restricted",\
-            'I help interview potential protest supporters to make sure they are trustworthy',\
-            "I actively prevent pro-life supporters from harassing people going to Planned Parenthood"]
+            ["I attended a women's rights march to protest bodily autonomy being restricted.",\
+            'I help interview potential protest supporters to make sure they are trustworthy.',\
+            "I actively prevent pro-life supporters from harassing people going to Planned Parenthood."]
     }
     return mapDescDict[styleName]
 

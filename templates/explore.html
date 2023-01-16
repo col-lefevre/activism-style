@@ -19,20 +19,21 @@
     <div class="row" id="activist-header">
         <div class="eight columns">
             <div class="font-domine3">Meet the activists</div>
+            <div class="font-inter3">Click on the activists to learn more about them!</div>
         </div>
     </div>
     <div class="row" id="activist-desc">
         <div class="flexbox-container">
             {% for style in style_blurbs %}
-            <div class="flexbox-activist">
-                <a href="{{url_for('styles', styleName=style[0])}}">    
-                    <div class="activist-pic"><img class="u-full-width" src="{{url_for('static', filename='images/styles/' + style[0] + '.png')}}"></div>
-                </a>
+            <a href="{{url_for('styles', styleName=style[0])}}" class="flexbox-activist">    
+                <div class="activist-pic">
+                    <img class="u-full-width" src="{{url_for('static', filename='images/styles/' + style[0] + '.png')}}">
+                </div>
                 <div class="flexbox-info">
                     <div class="font-domine2">The {{style[1]}}</div>
                     <div class="font-inter3">{{style[2]}}</div>
                 </div>
-            </div>
+            </a>
             {% endfor %}
         </div>
     </div>

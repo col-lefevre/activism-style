@@ -11,23 +11,16 @@ def isQuizDone():
     return session.get('quizDone', False)
 
 def getStyleRank():
-    styleRank = session.get('styleRanks', None)
-    if styleRank:
-        styleRank = list(styleRank.keys())
-    return styleRank
+    styleRanks = session.get('styleRanks', None)
+    if styleRanks:
+        styleRanks = [x[0] for x in styleRanks]
+    return styleRanks
 
 def getStylePercent():
-    stylePercent = session.get('styleRanks', None)
-    if stylePercent:
-        stylePercent = list(stylePercent.values())
-    return stylePercent
-
-def getDefaultStyle():
-    styleRank = getStyleRank()
-    if styleRank == None:
-      return 'edu'
-    else:
-        return styleRank[0]
+    stylePerc = session.get('styleRanks', None)
+    if stylePerc:
+        stylePerc = [x[1] for x in stylePerc]
+    return stylePerc
 
 @app.route('/')
 def index():
@@ -39,9 +32,7 @@ def quiz():
 
 @app.route('/quiz/<int:qInput>', methods=['GET', 'POST'])
 def question(qInput):
-    if (qInput < 0) or (qInput > 13):
-        return redirect(url_for('index'))
-    elif qInput == 13:
+    if qInput == 13:
         return redirect(url_for('result'))
     elif qInput == 0:
         return redirect(url_for('index'))
@@ -67,34 +58,21 @@ def result():
     for i in range(1, 13):
         answer = int(session.get('q' + str(i), -1))
         if answer == -1:
-            # Replace with error page
             return redirect(url_for('index'))
         qAnswers.append(answer)
     
-    rankedStyles = myfunc.getStyleRanks(qAnswers)
-    print(rankedStyles)
+    rankedStyles = myfunc.calcStyleRanks(qAnswers)
+    session['styleRanks'] = rankedStyles
     session['quizDone'] = True
-    session['styleRanks'] = {x[0]:x[1] for x in rankedStyles}
 
-    return render_template('results.html', \
-        style1_name=rankedStyles[0][2], style1_perc=rankedStyles[0][1], style1_img=url_for('static', filename=('images/styles/'+rankedStyles[0][0]+'.png')),\
-        style2_name=rankedStyles[1][2], style2_perc=rankedStyles[1][1], style2_img=url_for('static', filename=('images/styles/'+rankedStyles[1][0]+'.png')),\
-        style3_name=rankedStyles[2][2], style3_perc=rankedStyles[2][1], style3_img=url_for('static', filename=('images/styles/'+rankedStyles[2][0]+'.png')))
-
-@app.route('/style')
-def style():
-    return redirect(url_for('styles', styleName=getDefaultStyle()))
+    return render_template('results.html', ranked_styles=rankedStyles)
 
 @app.route('/style/<string:styleName>')
 def styles(styleName):
-    styleInfo = myfunc.getStyleInfo(styleName)
     return render_template('style.html', \
-        style_intro = myfunc.getStyleIntro(styleName, isQuizDone(), getStyleRank(), getStylePercent()), \
+        style_intro=myfunc.getStyleIntro(styleName, isQuizDone(), getStyleRank(), getStylePercent()), \
         style_nav=myfunc.getStyleNav(styleName, isQuizDone(), getStyleRank()), \
-        style_title = styleInfo['title'], \
-        style_adj = styleInfo['adj'], \
-        style_desc = styleInfo['desc'], \
-        style_img=url_for('static', filename=('images/styles/'+styleName+'.png')),\
+        style_info=myfunc.getStyleInfo(styleName),\
         style_pos=myfunc.getMapPos(styleName), \
         style_descs=myfunc.getMapDesc(styleName),\
         style_involved=myfunc.getInvolved(styleName),\
@@ -102,6 +80,8 @@ def styles(styleName):
         quiz_status=isQuizDone(),\
         style_name=styleName)
 
+@app.route('/style')
+@app.route('/styles')
 @app.route('/explore')
 def explore():
     return render_template('explore.html', style_blurbs=myfunc.getStyleBlurb())
@@ -113,7 +93,7 @@ def privacy():
 @app.route('/data/clear')
 def dataclear():
     session.clear()
-    return redirect(url_for('privacy'))
+    return "Data cleared!"
     
 @app.route('/about')
 def about():
