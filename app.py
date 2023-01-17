@@ -88,7 +88,12 @@ def explore():
 
 @app.route('/data')
 def privacy():
-    return render_template('data.html')
+    sessionVars = [k for k in session.keys()]
+    dataStored = False
+    if len(sessionVars) > 0:
+        dataStored = True
+
+    return render_template('data.html', data_stored = dataStored)
 
 @app.route('/data/clear')
 def dataclear():

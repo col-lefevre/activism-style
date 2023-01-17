@@ -153,13 +153,13 @@
 .navbar #logo {
     height: 30px;
     width: 30px;
-    padding: 10px;
+    padding: 15px 0px;
 }
 
 .navbar #hamburger {
     width: 30px;
     height: 30px;
-    padding: 10px;
+    padding: 15px 0px;
 
     display: none;
 }
