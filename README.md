@@ -13,4 +13,6 @@ Info
 --
 Hosted website: https://cgi.luddy.indiana.edu/~clefevr/activism-styles-v1.cgi/
 
+Refer to release v1 for CHI 23 SDC submission source code
+
 Image sources: Tartila @ Adobe Stock
