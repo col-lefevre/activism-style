@@ -2,6 +2,7 @@
 CHI 23 Student Design Competition Submission
 --------------------------------------------
 Design by A. Panicker, C. LeFevre, F. Modi, N. Dinesh, and S. Vallabhaneni
+
 Web Development by C. LeFevre
 --------------------------------------------
 
