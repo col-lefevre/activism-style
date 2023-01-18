@@ -1,11 +1,13 @@
 # activism-styles
-CHI 23 Student Design Competition Submission
---------------------------------------------
+ACM CHI 23 Student Design Competition Submission
+
+Authors
+--
 Design by A. Panicker, C. LeFevre, F. Modi, N. Dinesh, and S. Vallabhaneni
-
 Web Development by C. LeFevre
---------------------------------------------
 
+Info
+--
+Hosted website: 
+Refer to branch v1 for CHI 23 SDC submission code
 Image sources: Tartila @ Adobe Stock
-
-Refer to branch v1 for CHI 23 SDC submission code.
