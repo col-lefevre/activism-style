@@ -11,6 +11,6 @@ Web Development by C. LeFevre
 
 Info
 --
-Hosted website: LINK
+Hosted website: https://cgi.luddy.indiana.edu/~clefevr/activism-styles-v1.cgi/
 
 Image sources: Tartila @ Adobe Stock
