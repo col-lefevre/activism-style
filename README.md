@@ -13,6 +13,4 @@ Info
 --
 Hosted website: LINK
 
-Refer to branch v1 for CHI 23 SDC submission code
-
 Image sources: Tartila @ Adobe Stock
