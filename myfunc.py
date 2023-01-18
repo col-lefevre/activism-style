@@ -597,7 +597,7 @@ def getInvolved(styleName):
                 "Volunteer to help organize existing events",\
                 "Existing events are an important part of fighting for reproductive rights. As an organizer, you have valuable management skills that can help these events be successful."\
             ], 'info': [\
-                ("How can I find existing events?", "Where to find will on the location and organization. Broadly, online search engines, e.g., Google, can help you find you events in an area you are familiar with. Alternatively, if you're familiar with the area, you could look at in-person billboards and contact organizations you are aware of."),\
+                ("How can I find existing events?", "Where to find events will depend on the location and organization. Broadly, online search engines, e.g., Google, can help you find you events in an area you are familiar with. Alternatively, if you're familiar with the area, you could look at in-person billboards and contact organizations you are aware of."),\
                 ("Are there any events to help with in Bloomington?", "Many of the larger scale protests occur in Indianapolis, not Bloomington. But there are many small events, such as fundraisers or letter writing, that happen in Bloomington successfully. There isn't one overarching organizer for all these events, so you'll need to look event by event."),\
                 ("How exactly can I help organize these events?", "There are many valuable skills you could bring to managing an event. You could create fliers to advertise the event, secure a venue for the event, find potential donors to fund the event, etc.")\
             ]},\
@@ -653,7 +653,7 @@ def getInvolved(styleName):
 # CONTENT -> /about-us
 def getTeamInfo():
     teamInfo = [\
-        ['ash', 'Aswati Panicker', 'Ph.D. Health Informatics', 'Indiana University | May 2025'],\
+        ['ash', 'Aswati Panicker', 'Ph.D. Informatics', 'Indiana University | May 2025'],\
         ['colin', 'Colin LeFevre', 'B.S. Informatics', 'Indiana University | May 2024'],\
         ['forum', 'Forum Modi', 'Ph.D. Informatics', 'Indiana University | May 2027'],\
         ['nikhil', 'Nikhil Dinesh', 'M.S. Human Computer Interaction & Design', 'Indiana University | May 2023'],\
