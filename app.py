@@ -80,6 +80,7 @@ def styles(styleName):
         quiz_status=isQuizDone(),\
         style_name=styleName)
 
+@app.route('/style')
 @app.route('/styles')
 @app.route('/explore')
 def explore():
