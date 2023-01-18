@@ -28,7 +28,7 @@
         <div class="member-flex">
             {% for member in team_info %}
             <div class="member">
-                <img src="{{url_for('static', filename='images/team/'+member[0]+'.png')}}">
+                <img src="{{url_for('static', filename='images/team/'+member[0]+'.png')}}" alt="headshot style photo of {{member[1]}}">
                 <div class="member-text">
                     <div class="font-domine2">{{member[1]}}</div>
                     <div class="font-domine1">{{member[2]}}</div>

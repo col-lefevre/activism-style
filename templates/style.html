@@ -6,10 +6,10 @@
 {% block content2 %}
 <div class="container">
     <div class="row flex-info">
-            <img id="img1" src="{{url_for('static', filename=('images/styles/'+style_name+'.png'))}}">
+            <img id="img1" src="{{url_for('static', filename=('images/styles/'+style_name+'.png'))}}" alt="vector image of {{style_info['title']}} activist style">
             <div id="info-box">
                 <div class="flex-info-mobile">
-                    <img id="img2" src="{{url_for('static', filename=('images/styles/'+style_name+'.png'))}}">
+                    <img id="img2" src="{{url_for('static', filename=('images/styles/'+style_name+'.png'))}}" alt="vector image of {{style_info['title']}} activist style">
                     <div id="info2">    
                         <div class="font-inter2">{{style_intro}}:</div>
                         <div class="font-domine3">The {{style_info['title']}}</div>
@@ -30,13 +30,13 @@
     {% if quiz_status %}
     <div class="style-carousel">
         <a {% if style_nav['prev'] == 'disabled' %}class="disabled"{% else %}href="{{url_for('styles', styleName=style_nav['prev'])}}"{% endif %}>
-            <img src="{{url_for('static', filename='images/icons/arrow.png')}}">
+            <img src="{{url_for('static', filename='images/icons/arrow.png')}}" alt="arrow">
         </a>
         {% for i in range(5) %}
         <a href="{{url_for('styles', styleName=style_rank[i])}}" class="{% if style_nav['current'] == i %}current{% endif %} nav-circle"></a>
         {% endfor %}
         <a {% if style_nav['next'] == 'disabled' %}class="disabled"{% else %}href="{{url_for('styles', styleName=style_nav['next'])}}"{% endif %}>
-            <img class="reverse" src="{{url_for('static', filename='images/icons/arrow.png')}}">
+            <img class="reverse" src="{{url_for('static', filename='images/icons/arrow.png')}}" alt="arrow">
         </a>
     </div>
     {% endif %}
@@ -87,7 +87,7 @@
         <div class="font-inter3">{{entry['preview'][1]}}</div>
         <div class="learn-more">
             <span class="font-inter2">More Info</span>
-            <img src="{{url_for('static', filename='images/icons/arrow.png')}}">
+            <img src="{{url_for('static', filename='images/icons/arrow.png')}}" alt="arrow">
         </div>
         <div class="hidden-content">
             {% for info in entry['info'] %}
@@ -105,13 +105,13 @@
         <div class="font-inter3">Click the activists on the map to read anonymized stories from {{style_info['title']}}s!</div>     
     </div>
     <div class="row map-container">
-        <img class="u-full-width" src="{{url_for('static', filename='images/map-4x3.png')}}">
+        <img class="u-full-width" src="{{url_for('static', filename='images/map-4x3.png')}}" alt="vector art map - white background, purple trees, grey buildings">
         <div class="map-overlay">
             {% for i in range(1, 13) %}
             <div>
                 {% for style in style_pos %}
                     {% if i == style[0] %}
-                <img class="map-img" src="{{url_for('static', filename=('images/styles/'+style_name+'.png'))}}">
+                <img class="map-img" src="{{url_for('static', filename=('images/styles/'+style_name+'.png'))}}" alt="vector image of {{style_info['title']}} activist style">
                 <span class="{{style[1]}}-orient disabled font-inter3">{{style_descs.pop(0)}}</span>
                     {% endif %}
                 {% endfor %}
