@@ -7,7 +7,7 @@ Authors
 --
 Design by A. Panicker, C. LeFevre, F. Modi, N. Dinesh, and S. Vallabhaneni
 
-Web Development by C. LeFevre
+Web Development by C. LeFevre and F. Modi
 
 Info
 --
