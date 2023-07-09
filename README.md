@@ -2,14 +2,12 @@
 
 Authors
 --
-Design by C. LeFevre, A. Panicker, F. Modi, N. Dinesh, and S. Vallabhaneni
+Design by Colin LeFevre, Aswati Panicker, Forum Modi, Nikhil Dinesh, and Sitha Vallabhaneni
 
-Web Development by C. LeFevre and F. Modi
+Development by Colin LeFevre and Forum Modi
 
-Info
+Credit
 --
-Hosted website: https://cgi.luddy.indiana.edu/~clefevr/activism-styles-v1.cgi/
-
 Image sources: Tartila @ Adobe Stock
 
 Icon sources: Icons8.com
