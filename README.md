@@ -8,7 +8,7 @@ Contributors
 - [Nikhil Dinesh](https://nikhildinesh.com) (UX Designer)
 - [Forum Modi](https://forumjmodi.com/) (UX Designer, Secondary Developer)
 
-External Materias
+External Materials
 --
 - Images: [Tartila @ Adobe Stock](https://stock.adobe.com/contributor/207650993/tartila)
 - Icon sources: [Icons8](https://icons8.com/)
