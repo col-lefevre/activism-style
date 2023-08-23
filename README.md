@@ -1,13 +1,16 @@
 # activism-styles
 
-Authors
+Contributors
 --
-Design by Colin LeFevre, Aswati Panicker, Forum Modi, Nikhil Dinesh, and Sitha Vallabhaneni
+- [Colin LeFevre](https://colinlefevre.me) (UX Designer, Primary Developer)
+- [Aswati Panicker](https://aswatipanicker.com) (UX Designer)
+- [Sitha Vallabhaneni](https://sitha-vallabhanenis-portfolio.webflow.io/) (UX Designer)
+- [Nikhil Dinesh](https://nikhildinesh.com) (UX Designer)
+- [Forum Modi](https://forumjmodi.com/) (UX Designer, Secondary Developer)
 
-Development by Colin LeFevre and Forum Modi
-
-Credit
+External Materias
 --
-Image sources: Tartila @ Adobe Stock
-
-Icon sources: Icons8.com
+- Images: [Tartila @ Adobe Stock](https://stock.adobe.com/contributor/207650993/tartila)
+- Icon sources: [Icons8](https://icons8.com/)
+- Backend framework: [Flask](https://flask.palletsprojects.com/en/2.3.x/)
+- Frontend grid: [Skeleton](http://getskeleton.com/)
